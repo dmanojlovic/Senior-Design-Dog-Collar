@@ -6,7 +6,7 @@ import serial
 import time
 
 #Initialize the UART on Raspberry Pi
-def init_uart(port='/dev/serial10', baudrate=9600, timeout=1): #Might have to alter port???????????????????????????????????????????
+def init_uart(port='/dev/ttyS0', baudrate=9600, timeout=1): #Might have to alter port???????????????????????????????????????????
     try:
         ser = serial.Serial(port, baudrate, timeout=timeout)
         if ser.is_open:
@@ -37,7 +37,7 @@ def close_uart(ser):
         print("UART not initialized or already closed.")
 
 if __name__ == '__main__':
-    ser = init_uart(port='/dev/serial0', baudrate=9600, timeout=1)
+    ser = init_uart(port='/dev/ttyS0', baudrate=9600, timeout=1)
     if ser:
         send_at_command(ser, 'AT+UART=9600,8,1,0,0')  # Example to configure UART settings
         send_at_command(ser, 'AT+ADDRESS=123')  # Example to set LoRa address
