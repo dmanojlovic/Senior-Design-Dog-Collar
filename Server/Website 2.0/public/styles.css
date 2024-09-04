@@ -1,0 +1,27 @@
+html,
+body {
+height: 100%;
+margin: 0;
+padding: 0;
+background-color: black;
+}
+
+h1{
+	color: white;
+	text-align: center;
+	font-size: 5vw;
+}
+
+h3{
+	color: white;
+	text-align: center;
+	font-size: 2vw;
+}
+
+#map{
+	height: 80%;
+	width: 50%;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;	
+}

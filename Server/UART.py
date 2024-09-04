@@ -6,7 +6,7 @@ import serial
 import time
 
 #Initialize the UART on Raspberry Pi
-def init_uart(port='/dev/serial10', baudrate=9600, timeout=1): #Might have to alter port???????????????????????????????????????????
+def init_uart(port='/dev/ttyS0', baudrate=9600, timeout=1): 
     try:
         ser = serial.Serial(port, baudrate, timeout=timeout)
         if ser.is_open:
@@ -19,11 +19,16 @@ def init_uart(port='/dev/serial10', baudrate=9600, timeout=1): #Might have to al
 #Send at command to LoRa module
 def send_at_command(ser, command):
     if ser:
-        ser.write((command + '\r\n').encode())  # Send the command followed by a new line
-        time.sleep(0.5)  # Wait for the LoRa chip to process
-        response = ser.read_all().decode()  # Read all available response
+        ser.write((command + '\r\n').encode('utf-8'))  # Send the command followed by a new line
+        #ser.write(b'AT\r\n')
+        #print(f"{command}+'\r\n')
+        #print(ser.write((command + '\r\n').encode()))
+        #ser.inWaiting()
+        ##time.sleep(.5)  # Wait for the LoRa chip to process
+        #response = ser.read().decode()  # Read all available response
+        response = ser.readline()
+        #response = ser.read(2)  # Read all available response
         print(f"Sent: {command}, Received: {response}")
-        return response
     else:
         print("Serial port not initialized.")
         return None
@@ -37,9 +42,11 @@ def close_uart(ser):
         print("UART not initialized or already closed.")
 
 if __name__ == '__main__':
-    ser = init_uart(port='/dev/serial0', baudrate=9600, timeout=1)
+    ser = init_uart(port='/dev/ttyS0', baudrate=115200, timeout=1)
     if ser:
-        send_at_command(ser, 'AT+UART=9600,8,1,0,0')  # Example to configure UART settings
+        print("Hello")
+        send_at_command(ser, 'AT')
+        send_at_command(ser, 'AT+CRFOP?')  # Example to configure UART settings
         send_at_command(ser, 'AT+ADDRESS=123')  # Example to set LoRa address
         send_at_command(ser, 'AT+NETWORKID=7')  # Example to set LoRa network ID
         send_at_command(ser, 'AT+MODE=1')  # Example to set LoRa mode
