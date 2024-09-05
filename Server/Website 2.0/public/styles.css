@@ -25,3 +25,9 @@ h3{
 	margin-left:auto;
 	margin-right:auto;	
 }
+
+@media screen and (orientation: portrait) {
+	#map{
+		width: 100%;
+	}
+}
