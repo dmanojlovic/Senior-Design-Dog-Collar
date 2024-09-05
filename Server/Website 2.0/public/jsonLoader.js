@@ -21,11 +21,8 @@ function initMap(latlng){
 
 function jsonLoad() {
     fetch('data.json').then(response => response.json()).then(data => {
-    const dataDisplay = document.getElementById("dataDisplay");
-    const battery = document.createElement("h3");
+    const battery = document.getElementById("battery");
     battery.textContent = "Battery Life: " + data.life + "%";
-
-    dataDisplay.append(battery);
 
     initMap(data.location);
 
