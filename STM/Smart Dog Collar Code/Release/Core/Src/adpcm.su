@@ -1,0 +1,2 @@
+../Core/Src/adpcm.c:50:9:ADPCM_Encode	20	static
+../Core/Src/adpcm.c:142:9:ADPCM_Decode	12	static
