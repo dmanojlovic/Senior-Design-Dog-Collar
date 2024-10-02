@@ -209,9 +209,181 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 140.97 114.3) (xy 140.97 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ec50baf-4350-4edf-8c24-364f38aba917")
+	)
+	(wire
+		(pts
+			(xy 135.89 114.3) (xy 135.89 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e53d337-83e4-4397-9fb6-8914e0dc5728")
+	)
+	(wire
+		(pts
+			(xy 149.86 114.3) (xy 149.86 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90fafbf1-647e-4075-95fd-d79be0f98d27")
+	)
+	(wire
+		(pts
+			(xy 130.81 114.3) (xy 130.81 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bc42484-ea2c-45ae-931d-9094b8bc6f9c")
+	)
+	(wire
+		(pts
+			(xy 125.73 114.3) (xy 125.73 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6dedd3a-d7d1-4df0-8214-afbdeb0d3aac")
+	)
+	(text "Lora Chip (RYLR890)"
+		(exclude_from_sim no)
+		(at 198.12 189.484 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+			)
+		)
+		(uuid "7fc56d96-95b5-4e94-8a76-48c4c2c2bee0")
+	)
+	(global_label "Micro (PD2)"
+		(shape input)
+		(at 140.97 130.81 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0f235b0e-c2b5-4ffe-ac9e-704ca1fde4f6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 140.97 145.2857 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 149.86 130.81 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8fa717a5-9540-4b70-9ba9-fd3359802a46")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 149.86 137.6657 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Micro (PC12)"
+		(shape input)
+		(at 135.89 130.81 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cb573048-c10c-4f78-9d35-d66b23182699")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 135.89 146.4952 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "U4 Pin (Vout)"
+		(shape input)
+		(at 130.81 130.81 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e742403a-d76f-4135-9ad3-6c84b67b28ee")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 130.81 147.0999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "U4 Pin (Vout)"
+		(shape input)
+		(at 125.73 130.81 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "eae9cb9a-6c55-44e6-93f2-b81794e6c2da")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 125.73 147.0999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(symbol
 		(lib_id "LoRa Chip:RYLR896")
-		(at 105.41 115.57 0)
+		(at 137.16 101.6 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -220,7 +392,7 @@
 		(fields_autoplaced yes)
 		(uuid "21cf91e0-3fd0-4306-9aa0-5dde5aae87e7")
 		(property "Reference" "U6"
-			(at 121.92 99.695 0)
+			(at 153.67 85.725 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -229,7 +401,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 105.41 115.57 0)
+			(at 137.16 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -237,7 +409,7 @@
 			)
 		)
 		(property "Footprint" "LoRa Chip:LoRa Chip"
-			(at 105.41 115.57 0)
+			(at 137.16 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -246,7 +418,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 115.57 0)
+			(at 137.16 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -255,7 +427,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 115.57 0)
+			(at 137.16 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)

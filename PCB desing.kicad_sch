@@ -11245,7 +11245,7 @@
 			)
 		)
 		(instances
-			(project "PCB"
+			(project "PCB desing"
 				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9"
 					(page "6")
 				)
@@ -11285,7 +11285,7 @@
 			)
 		)
 		(instances
-			(project "PCB"
+			(project "PCB desing"
 				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9"
 					(page "7")
 				)
@@ -11325,7 +11325,7 @@
 			)
 		)
 		(instances
-			(project "PCB"
+			(project "PCB desing"
 				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9"
 					(page "5")
 				)
@@ -11365,7 +11365,7 @@
 			)
 		)
 		(instances
-			(project "PCB"
+			(project "PCB desing"
 				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9"
 					(page "8")
 				)
@@ -11373,7 +11373,7 @@
 		)
 	)
 	(sheet
-		(at 93.98 114.3)
+		(at 92.71 114.3)
 		(size 54.61 80.01)
 		(fields_autoplaced yes)
 		(stroke
@@ -11386,7 +11386,7 @@
 		)
 		(uuid "b34159d2-5fd0-438d-bd40-85a1a2886e8c")
 		(property "Sheetname" "GPS"
-			(at 93.98 113.563 0)
+			(at 92.71 113.563 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11396,7 +11396,7 @@
 			)
 		)
 		(property "Sheetfile" "GPS.kicad_sch"
-			(at 93.98 194.92 0)
+			(at 92.71 194.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11405,7 +11405,7 @@
 			)
 		)
 		(instances
-			(project "PCB"
+			(project "PCB desing"
 				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9"
 					(page "4")
 				)
@@ -11445,7 +11445,7 @@
 			)
 		)
 		(instances
-			(project "PCB"
+			(project "PCB desing"
 				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9"
 					(page "3")
 				)
@@ -11486,7 +11486,7 @@
 			)
 		)
 		(instances
-			(project "PCB"
+			(project "PCB desing"
 				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9"
 					(page "2")
 				)
