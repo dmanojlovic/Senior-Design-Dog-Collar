@@ -1609,10 +1609,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "676f07ae-9cbc-4ce3-b111-97b6686e6574")
+			(uuid "f101084d-2449-46b4-938d-3aeac238ef1f")
 		)
 		(pin "2"
-			(uuid "5b3f150e-e9c3-4c2f-8097-02b77d734f49")
+			(uuid "f5c3b188-2def-4b34-b80b-6ecf0df94e89")
 		)
 		(instances
 			(project "PCB desing"
@@ -1677,10 +1677,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "70803c7b-1d77-4cf0-8669-fd651b1fc842")
+			(uuid "aef2c564-2fcf-4598-ac76-bbf04e59e59d")
 		)
 		(pin "2"
-			(uuid "e7767890-1cd6-45ff-be69-8f099a953cb4")
+			(uuid "fe57b4a1-ad08-4d7a-8e1c-f905043933ae")
 		)
 		(instances
 			(project "PCB desing"
@@ -1745,10 +1745,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "488901a6-6e3f-4870-b7af-6a599009d145")
+			(uuid "37fe0dee-20c1-4851-bb38-b17ea05f9617")
 		)
 		(pin "2"
-			(uuid "1e16f5f9-935e-4f33-b75f-96212ccb3c1e")
+			(uuid "4b21f50d-9d3f-4d2f-9938-ba75fc59dec4")
 		)
 		(instances
 			(project "PCB desing"
@@ -1815,7 +1815,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "953db450-1df1-4a6b-a0ce-af669fa76dd1")
+			(uuid "ae38bc44-d41d-4b1e-9045-679959bc9b65")
 		)
 		(instances
 			(project "PCB desing"
@@ -1882,7 +1882,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "5ea39415-e2a1-44b2-9683-91b1747f057e")
+			(uuid "6c26da93-09f3-4cec-924a-e2898a41ba63")
 		)
 		(instances
 			(project "PCB desing"
@@ -1948,10 +1948,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "01155b45-e1bd-4011-bbf0-56fbe1a77b27")
+			(uuid "e96c19b7-f2de-4ef2-8c8d-e5775dd1a6c7")
 		)
 		(pin "2"
-			(uuid "8b41dcca-d3de-4374-8615-de7fb60b7705")
+			(uuid "8ad6ffac-0545-4bcb-9ad9-1b3780d605aa")
 		)
 		(instances
 			(project "PCB desing"
@@ -2016,10 +2016,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "b752a332-82e7-4de7-90ee-5cdaec72574e")
+			(uuid "3bbc3fff-9b91-4606-9e4e-b5073c0fbda6")
 		)
 		(pin "2"
-			(uuid "8bc8da14-5599-4f18-a69e-c5e9f8983fd7")
+			(uuid "4aa995d3-6f9d-4285-abe9-3c703858ecf3")
 		)
 		(instances
 			(project "PCB desing"
@@ -2085,7 +2085,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "20d1dbae-d254-41f6-b332-a3cd11face0b")
+			(uuid "5213ebba-f2ec-4307-a1a6-4db4d395b290")
 		)
 		(instances
 			(project "PCB desing"
@@ -2150,10 +2150,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "853e662e-8f6e-4e68-8b56-3607bce9ffa1")
+			(uuid "92374927-b1fd-4c13-9933-ce069a995438")
 		)
 		(pin "2"
-			(uuid "1663e7d1-6289-4174-b44a-2ae981832859")
+			(uuid "2514b806-f557-4ad3-8b50-662e9cbb9387")
 		)
 		(instances
 			(project "PCB desing"
@@ -2218,10 +2218,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "6d7d7199-52b9-4d0d-93fd-da1638eb7abd")
+			(uuid "f45f14f1-514e-4db4-b6c0-59a31db2b545")
 		)
 		(pin "2"
-			(uuid "08f56a23-cc21-47d5-821d-dcd15cbfdc3e")
+			(uuid "ee47df76-06ca-4e78-89be-ffb562ab9ccc")
 		)
 		(instances
 			(project "PCB desing"
@@ -2288,10 +2288,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "3fae4b9f-fdef-4486-b8a4-4b48ff44d66c")
+			(uuid "2a7c06f9-9eb6-445f-b0f7-2a3d1249c961")
 		)
 		(pin "2"
-			(uuid "cce3d64e-5f79-4966-8424-1825be282a28")
+			(uuid "fdd02d8d-2f00-454b-a42f-ddd45ab46264")
 		)
 		(instances
 			(project "PCB desing"
@@ -2357,7 +2357,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "32489188-ed6d-4efc-a06d-c6924bda903b")
+			(uuid "41fab0ce-f62a-4fbc-96aa-8e6a2e175639")
 		)
 		(instances
 			(project "PCB desing"
@@ -2422,28 +2422,28 @@
 			)
 		)
 		(pin "1"
-			(uuid "aa66176f-13ef-4c58-9889-af9038000f41")
+			(uuid "bae38f4b-609c-4645-b800-3aad03e1e8f6")
 		)
 		(pin "2"
-			(uuid "a0a0602a-1340-4190-b93a-22cca870adf5")
+			(uuid "1f1b4038-ad0a-4a45-9933-ce9417b26113")
 		)
 		(pin "3"
-			(uuid "3acf33ac-5c88-4d2b-b493-2119c5e916a2")
+			(uuid "37b917db-2ac2-4842-9293-ae01f61c5163")
 		)
 		(pin "4"
-			(uuid "04c468c6-16c3-4f2d-a917-c8c4ebcfa1f1")
+			(uuid "ac72a952-b9af-498b-9cf5-2e6d7091e28e")
 		)
 		(pin "5"
-			(uuid "ee815846-7e87-4506-a7ed-2051b2400564")
+			(uuid "07faf319-a870-4e03-9c1b-95d9a7f5dec9")
 		)
 		(pin "6"
-			(uuid "e3ccb159-35b0-4d0e-aff6-85bc12a1c0f8")
+			(uuid "47de35f4-7852-45ae-8557-786a56bb7e21")
 		)
 		(pin "7"
-			(uuid "5edd3d1e-d3fd-4d95-b2f0-711c5e6bf19b")
+			(uuid "1a709ac5-bec1-47a9-a211-2075a478b4e6")
 		)
 		(pin "8"
-			(uuid "46e9b05d-d72b-43ef-80a3-23c58a584d1b")
+			(uuid "90679126-18a7-41de-9d9f-85f8c56d26df")
 		)
 		(instances
 			(project "PCB desing"
@@ -2510,7 +2510,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "caf7028a-1ddc-4bce-89da-c80130924cfe")
+			(uuid "3ccc929d-6527-4574-91f7-059ab0d68458")
 		)
 		(instances
 			(project "PCB desing"
@@ -2577,10 +2577,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "8b6e5460-0c63-4f29-95e2-0ae321ced357")
+			(uuid "75e1c67b-fc61-4a08-bec1-bebbd3f6685a")
 		)
 		(pin "2"
-			(uuid "c0e563a6-eafc-4f8b-9550-6c875ca63187")
+			(uuid "38d32a52-77bb-42ef-9720-57e09e9a3414")
 		)
 		(instances
 			(project "PCB desing"
