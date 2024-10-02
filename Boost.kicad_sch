@@ -1041,6 +1041,18 @@
 		(uuid "5116a567-abbb-4943-bf7e-61a047e96708")
 	)
 	(junction
+		(at 184.15 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "597f7153-e367-4f5d-babe-43aa95e825d4")
+	)
+	(junction
+		(at 184.15 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5e592891-1e49-4534-8844-3196ced7d34f")
+	)
+	(junction
 		(at 69.85 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1051,6 +1063,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8eec1bf8-9f71-4e8d-abaa-884c46716809")
+	)
+	(junction
+		(at 69.85 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c440e724-19c7-46c6-b167-bb4027b930d2")
 	)
 	(junction
 		(at 86.36 60.96)
@@ -1083,6 +1101,26 @@
 			(type default)
 		)
 		(uuid "128a91da-4238-4fd5-bb39-1055894516e5")
+	)
+	(wire
+		(pts
+			(xy 69.85 121.92) (xy 34.29 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1bbecef3-3168-4e8e-9693-64d9b4d4198f")
+	)
+	(wire
+		(pts
+			(xy 184.15 121.92) (xy 208.28 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ef74326-173c-4d11-8fa8-943f993ccfaf")
 	)
 	(wire
 		(pts
@@ -1156,6 +1194,16 @@
 	)
 	(wire
 		(pts
+			(xy 34.29 121.92) (xy 34.29 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7bf16807-aa0c-4310-ad39-8eb82e7df2ed")
+	)
+	(wire
+		(pts
 			(xy 100.33 91.44) (xy 86.36 91.44)
 		)
 		(stroke
@@ -1203,6 +1251,16 @@
 			(type default)
 		)
 		(uuid "80b11bd4-7330-4875-83d9-2b4e9bfd46df")
+	)
+	(wire
+		(pts
+			(xy 184.15 60.96) (xy 205.74 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89294c83-610b-471b-8e20-857d5ea4d57b")
 	)
 	(wire
 		(pts
@@ -1283,6 +1341,16 @@
 			(type solid)
 		)
 		(uuid "c0ae6fb7-4cbf-4ed2-9316-f079242e4c04")
+	)
+	(wire
+		(pts
+			(xy 208.28 121.92) (xy 208.28 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c27a01b5-ce7e-4ac5-8107-77c94bd432a7")
 	)
 	(wire
 		(pts
@@ -1388,6 +1456,75 @@
 		(uuid "19124067-7560-478d-9b91-edd9a675b46b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 34.29 21.4553 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Boost Ground (V-)"
+		(shape input)
+		(at 208.28 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "625f7a90-d8ac-45da-8962-64c7ac90acd5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 230.0048 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Boost Output (Vout)"
+		(shape input)
+		(at 205.74 60.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "64ca5326-0908-48cc-8fdf-f214e3e9f1aa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 228.4928 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Battery Box Vin (Connectors)"
+		(shape input)
+		(at 34.29 104.14 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "6b374f59-2a02-4dd2-8303-85d7d0f8be97")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 72.4971 90)
 			(effects
 				(font
 					(size 1.27 1.27)

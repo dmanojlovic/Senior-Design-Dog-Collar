@@ -737,6 +737,18 @@
 		)
 	)
 	(junction
+		(at 57.15 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "041aebdc-a50b-406f-a20b-f205929325b7")
+	)
+	(junction
+		(at 156.21 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "13e7b261-ed77-49ec-943f-3778ae692e75")
+	)
+	(junction
 		(at 133.35 90.17)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -823,6 +835,16 @@
 			(type default)
 		)
 		(uuid "00baab3e-d008-4640-b842-483f6e999db9")
+	)
+	(wire
+		(pts
+			(xy 36.83 128.27) (xy 36.83 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09d1f097-d918-481d-871e-9be6d95024ef")
 	)
 	(wire
 		(pts
@@ -916,6 +938,16 @@
 	)
 	(wire
 		(pts
+			(xy 57.15 130.81) (xy 36.83 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ada277d-746c-436e-be3f-7ad46dd840d6")
+	)
+	(wire
+		(pts
 			(xy 128.27 110.49) (xy 128.27 115.57)
 		)
 		(stroke
@@ -963,6 +995,16 @@
 			(type default)
 		)
 		(uuid "6e4d4f17-f022-493f-b911-5de26695c2b6")
+	)
+	(wire
+		(pts
+			(xy 160.02 130.81) (xy 160.02 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76b2b8a5-1973-4a27-adfb-8f84f1725552")
 	)
 	(wire
 		(pts
@@ -1136,6 +1178,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 130.81) (xy 160.02 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae651d59-f019-4163-9bc5-f0ea6488f6ab")
+	)
+	(wire
+		(pts
 			(xy 156.21 77.47) (xy 162.56 77.47)
 		)
 		(stroke
@@ -1283,6 +1335,52 @@
 		(uuid "2c91b2f9-a1df-4981-bc1f-a3d7e0c87ce9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 36.83 50.6653 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Battery Box Vin (Connectors)"
+		(shape input)
+		(at 36.83 128.27 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "42534b97-5048-4bcd-858c-a8f35854a4c4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 36.83 96.6271 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Buck Boost Ground (V-)"
+		(shape input)
+		(at 160.02 132.08 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "610bf9c3-0a7a-4720-9654-5cee6c5a26d9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.2481 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)

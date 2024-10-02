@@ -745,6 +745,12 @@
 		(color 0 0 0 0)
 		(uuid "ef01542b-c513-4d58-9dba-4a6320653e83")
 	)
+	(junction
+		(at 160.02 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f5534aed-ce86-4942-8593-9ae954f3c382")
+	)
 	(wire
 		(pts
 			(xy 72.39 135.89) (xy 133.35 135.89)
@@ -834,6 +840,16 @@
 			(type default)
 		)
 		(uuid "48ca759e-b5b4-46b7-8c93-af8c517e8fcf")
+	)
+	(wire
+		(pts
+			(xy 160.02 78.74) (xy 160.02 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64924080-6326-480a-acc2-bf7f77f4ddfa")
 	)
 	(wire
 		(pts
@@ -966,6 +982,29 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Buck Boost Ground (V-)"
+		(shape input)
+		(at 160.02 78.74 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "97eeac3d-1221-46ac-96df-2f1a415db972")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.2481 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
