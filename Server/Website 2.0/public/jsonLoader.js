@@ -35,7 +35,7 @@ async function initMap(latlng){
         fillOpacity: 0.35,
         map,
         center: latlng,
-        radius: Math.sqrt(.05) * 100,
+        radius: Math.sqrt(.01) * 100,
     });
 
     posArea.setMap(map);
@@ -57,8 +57,6 @@ async function initMap(latlng){
 
 function jsonLoad() {
     fetch('data.json').then(response => response.json()).then(data => {
-    const battery = document.getElementById("battery");
-    battery.textContent = "Battery Life: " + data.life + "%";
     const time = document.getElementById("time");
     time.textContent = "Last Recorded: " + data.time;
 
