@@ -1,5 +1,5 @@
 # Senior-Design-Dog-Collar
-Welcome to our github page for our senior design project, below is a brief explanation of what is in each folder.
+Welcome to our github page for our senior design project, below is a brief explanation of what is in each folder. Learn more about our progress [here](https://engineering.purdue.edu/477grp5/)
 
 ## Hierarchy PCB
 This folder contains our PCB schematic in an easy to read format
