@@ -20,14 +20,7 @@ def init_uart(port='/dev/ttyS0', baudrate=9600, timeout=1): #Might have to alter
 def send_at_command(ser, command):
     if ser:
         ser.write((command + '\r\n').encode('utf-8'))  # Send the command followed by a new line
-        #ser.write(b'AT\r\n')
-        #print(f"{command}+'\r\n')
-        #print(ser.write((command + '\r\n').encode()))
-        #ser.inWaiting()
-        ##time.sleep(.5)  # Wait for the LoRa chip to process
-        #response = ser.read().decode()  # Read all available response
         response = ser.readline()
-        #response = ser.read(2)  # Read all available response
         print(f"Sent: {command}, Received: {response}")
     else:
         print("Serial port not initialized.")
@@ -44,12 +37,15 @@ def close_uart(ser):
 if __name__ == '__main__':
     ser = init_uart(port='/dev/ttyS0', baudrate=115200, timeout=1)
     if ser:
-        print("Hello")
+        print("Setting up LoRa module")
         send_at_command(ser, 'AT')
         send_at_command(ser, 'AT+CRFOP?')  # Example to configure UART settings
         send_at_command(ser, 'AT+ADDRESS=123')  # Example to set LoRa address
         send_at_command(ser, 'AT+NETWORKID=7')  # Example to set LoRa network ID
         send_at_command(ser, 'AT+MODE=1')  # Example to set LoRa mode
+        while(True):
+            response = ser.readline()
+            print(response)
         close_uart(ser)
        
 #NOTES 
