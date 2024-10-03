@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Adafruit Ultimate GPS Hat")(type "KiCad")(uri "$(KIPRJMOD)/Adafruit Ultimate GPS Hat.pretty")(options "")(descr ""))
+)
