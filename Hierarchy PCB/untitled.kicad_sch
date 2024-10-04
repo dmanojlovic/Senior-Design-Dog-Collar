@@ -271,7 +271,7 @@
 		)
 		(uuid "7fc56d96-95b5-4e94-8a76-48c4c2c2bee0")
 	)
-	(global_label "Micro (PD2)"
+	(global_label "Micro LoRa RX"
 		(shape input)
 		(at 140.97 130.81 270)
 		(fields_autoplaced yes)
@@ -283,7 +283,7 @@
 		)
 		(uuid "0f235b0e-c2b5-4ffe-ac9e-704ca1fde4f6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 140.97 145.2857 90)
+			(at 140.97 147.886 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -315,7 +315,7 @@
 			)
 		)
 	)
-	(global_label "Micro (PC12)"
+	(global_label "Micro LoRa TX"
 		(shape input)
 		(at 135.89 130.81 270)
 		(fields_autoplaced yes)
@@ -327,7 +327,7 @@
 		)
 		(uuid "cb573048-c10c-4f78-9d35-d66b23182699")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 135.89 146.4952 90)
+			(at 135.89 147.5836 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -337,7 +337,7 @@
 			)
 		)
 	)
-	(global_label "U4 Pin (Vout)"
+	(global_label "Buck-Boost Voltage"
 		(shape input)
 		(at 130.81 130.81 270)
 		(fields_autoplaced yes)
@@ -349,7 +349,7 @@
 		)
 		(uuid "e742403a-d76f-4135-9ad3-6c84b67b28ee")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 130.81 147.0999 90)
+			(at 130.81 153.2078 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -359,7 +359,7 @@
 			)
 		)
 	)
-	(global_label "U4 Pin (Vout)"
+	(global_label "Buck-Boost Voltage"
 		(shape input)
 		(at 125.73 130.81 270)
 		(fields_autoplaced yes)
@@ -371,7 +371,7 @@
 		)
 		(uuid "eae9cb9a-6c55-44e6-93f2-b81794e6c2da")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 125.73 147.0999 90)
+			(at 125.73 153.2078 90)
 			(effects
 				(font
 					(size 1.27 1.27)

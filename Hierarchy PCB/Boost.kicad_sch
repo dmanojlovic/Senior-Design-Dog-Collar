@@ -5,41 +5,45 @@
 	(uuid "4e126dc5-a71e-448a-80f0-acfd4432194f")
 	(paper "A4")
 	(lib_symbols
-		(symbol "2024-09-27_13-12-28-eagle-import:LM2735XMF/NOPBLM2735XMF/NOPB"
+		(symbol "Boost Chip:LM2735XMF_NOPB"
+			(pin_names
+				(offset 0.254)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" ""
-				(at 0 3.81 0)
+				(at 27.94 10.16 0)
 				(effects
 					(font
-						(size 2 1.7)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" ""
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 2 1.7)
+						(size 1.524 1.524)
 					)
 				)
 			)
-			(property "Footprint" "2024-09-27_13-12-28:MF05A"
+			(property "Value" "LM2735XMF/NOPB"
+				(at 27.94 7.62 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Footprint" "MF05A"
 				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
+						(italic yes)
 					)
 					(hide yes)
 				)
 			)
-			(property "Datasheet" ""
+			(property "Datasheet" "LM2735XMF/NOPB"
 				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
+						(italic yes)
 					)
 					(hide yes)
 				)
@@ -61,14 +65,32 @@
 					)
 				)
 			)
-			(symbol "LM2735XMF/NOPBLM2735XMF/NOPB_1_0"
+			(property "ki_keywords" "LM2735XMF/NOPB"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MF05A MF05A-M MF05A-L"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LM2735XMF_NOPB_0_1"
 				(polyline
 					(pts
-						(xy -25.4 0) (xy -22.86 0)
+						(xy 7.62 -10.16) (xy 48.26 -10.16)
 					)
 					(stroke
-						(width 0.1524)
-						(type solid)
+						(width 0.127)
+						(type default)
 					)
 					(fill
 						(type none)
@@ -76,11 +98,11 @@
 				)
 				(polyline
 					(pts
-						(xy -22.86 -12.7) (xy -22.86 12.7)
+						(xy 7.62 5.08) (xy 7.62 -10.16)
 					)
 					(stroke
-						(width 0.1524)
-						(type solid)
+						(width 0.127)
+						(type default)
 					)
 					(fill
 						(type none)
@@ -88,11 +110,11 @@
 				)
 				(polyline
 					(pts
-						(xy -22.86 12.7) (xy 22.86 12.7)
+						(xy 48.26 -10.16) (xy 48.26 5.08)
 					)
 					(stroke
-						(width 0.1524)
-						(type solid)
+						(width 0.127)
+						(type default)
 					)
 					(fill
 						(type none)
@@ -100,80 +122,20 @@
 				)
 				(polyline
 					(pts
-						(xy -15.24 15.24) (xy -15.24 12.7)
+						(xy 48.26 5.08) (xy 7.62 5.08)
 					)
 					(stroke
-						(width 0.1524)
-						(type solid)
+						(width 0.127)
+						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-				(polyline
-					(pts
-						(xy 0 -15.24) (xy 0 -12.7)
-					)
-					(stroke
-						(width 0.1524)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 15.24 15.24) (xy 15.24 12.7)
-					)
-					(stroke
-						(width 0.1524)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 22.86 -12.7) (xy -22.86 -12.7)
-					)
-					(stroke
-						(width 0.1524)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 22.86 12.7) (xy 22.86 -12.7)
-					)
-					(stroke
-						(width 0.1524)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 25.4 0) (xy 22.86 0)
-					)
-					(stroke
-						(width 0.1524)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 270)
-					(length 2.54)
-					(name "SW@3"
+				(pin power_in line
+					(at 0 0 0)
+					(length 7.62)
+					(name "SW"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -188,10 +150,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 0 -15.24 90)
-					(length 2.54)
-					(name "GND@5"
+				(pin power_in line
+					(at 0 -2.54 0)
+					(length 7.62)
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -206,10 +168,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 25.4 0 0)
-					(length 2.54)
-					(name "FB@4"
+				(pin input line
+					(at 55.88 -5.08 180)
+					(length 7.62)
+					(name "FB"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -224,10 +186,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at -25.4 0 180)
-					(length 2.54)
-					(name "EN@2"
+				(pin input line
+					(at 55.88 -2.54 180)
+					(length 7.62)
+					(name "EN"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -242,10 +204,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at -15.24 15.24 270)
-					(length 2.54)
-					(name "VIN@1"
+				(pin power_in line
+					(at 55.88 0 180)
+					(length 7.62)
+					(name "VIN"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1005,6 +967,12 @@
 		)
 	)
 	(junction
+		(at 95.25 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0a84f884-e57b-4c05-894e-806319a322e9")
+	)
+	(junction
 		(at 125.73 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1041,6 +1009,18 @@
 		(uuid "5116a567-abbb-4943-bf7e-61a047e96708")
 	)
 	(junction
+		(at 184.15 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "597f7153-e367-4f5d-babe-43aa95e825d4")
+	)
+	(junction
+		(at 184.15 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5e592891-1e49-4534-8844-3196ced7d34f")
+	)
+	(junction
 		(at 69.85 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1053,6 +1033,12 @@
 		(uuid "8eec1bf8-9f71-4e8d-abaa-884c46716809")
 	)
 	(junction
+		(at 69.85 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c440e724-19c7-46c6-b167-bb4027b930d2")
+	)
+	(junction
 		(at 86.36 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1063,6 +1049,16 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "df13f4a5-9e2a-4c3d-be7f-fd39d843dfdd")
+	)
+	(wire
+		(pts
+			(xy 154.94 88.9) (xy 151.13 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "027ce53c-5500-4f59-b7b5-0c25315df941")
 	)
 	(wire
 		(pts
@@ -1083,6 +1079,36 @@
 			(type default)
 		)
 		(uuid "128a91da-4238-4fd5-bb39-1055894516e5")
+	)
+	(wire
+		(pts
+			(xy 69.85 121.92) (xy 34.29 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1bbecef3-3168-4e8e-9693-64d9b4d4198f")
+	)
+	(wire
+		(pts
+			(xy 184.15 121.92) (xy 208.28 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ef74326-173c-4d11-8fa8-943f993ccfaf")
+	)
+	(wire
+		(pts
+			(xy 154.94 74.93) (xy 154.94 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21fd6136-d555-4315-a53e-193a8c44b038")
 	)
 	(wire
 		(pts
@@ -1156,13 +1182,13 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 91.44) (xy 86.36 91.44)
+			(xy 34.29 121.92) (xy 34.29 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7c78ec87-a34a-41fb-93da-81a22de9a74e")
+		(uuid "7bf16807-aa0c-4310-ad39-8eb82e7df2ed")
 	)
 	(wire
 		(pts
@@ -1176,16 +1202,6 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 91.44) (xy 86.36 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7f26fdd0-1b67-4019-82c6-260e61e39222")
-	)
-	(wire
-		(pts
 			(xy 69.85 60.96) (xy 69.85 95.25)
 		)
 		(stroke
@@ -1196,6 +1212,16 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 88.9) (xy 95.25 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80abd3dd-0526-4978-ade2-93bb4ef29f17")
+	)
+	(wire
+		(pts
 			(xy 69.85 102.87) (xy 69.85 121.92)
 		)
 		(stroke
@@ -1203,6 +1229,26 @@
 			(type default)
 		)
 		(uuid "80b11bd4-7330-4875-83d9-2b4e9bfd46df")
+	)
+	(wire
+		(pts
+			(xy 184.15 60.96) (xy 205.74 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89294c83-610b-471b-8e20-857d5ea4d57b")
+	)
+	(wire
+		(pts
+			(xy 151.13 86.36) (xy 151.13 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "937544b1-785a-456a-92b3-b2cc3fdc7a2a")
 	)
 	(wire
 		(pts
@@ -1226,13 +1272,23 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 106.68) (xy 125.73 121.92)
+			(xy 95.25 121.92) (xy 125.73 121.92)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9c6e5231-efe5-40f4-bf3f-a34696a652b2")
+		(uuid "9b563ecc-0333-44c8-a659-3d931d88e17c")
+	)
+	(wire
+		(pts
+			(xy 151.13 80.01) (xy 110.49 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e815d27-41ec-4c3f-9026-5a63ba207747")
 	)
 	(wire
 		(pts
@@ -1256,7 +1312,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 78.74) (xy 86.36 60.96)
+			(xy 86.36 67.31) (xy 86.36 60.96)
 		)
 		(stroke
 			(width 0)
@@ -1266,7 +1322,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 121.92) (xy 125.73 121.92)
+			(xy 69.85 121.92) (xy 95.25 121.92)
 		)
 		(stroke
 			(width 0)
@@ -1286,6 +1342,16 @@
 	)
 	(wire
 		(pts
+			(xy 208.28 121.92) (xy 208.28 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c27a01b5-ce7e-4ac5-8107-77c94bd432a7")
+	)
+	(wire
+		(pts
 			(xy 161.29 121.92) (xy 125.73 121.92)
 		)
 		(stroke
@@ -1293,6 +1359,16 @@
 			(type default)
 		)
 		(uuid "c76b50eb-577f-4902-ac43-4a1368854413")
+	)
+	(wire
+		(pts
+			(xy 95.25 86.36) (xy 95.25 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cdb1fd9c-1144-44f7-851d-e73c242a5151")
 	)
 	(wire
 		(pts
@@ -1306,7 +1382,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 76.2) (xy 110.49 60.96)
+			(xy 110.49 60.96) (xy 110.49 80.01)
 		)
 		(stroke
 			(width 0)
@@ -1346,6 +1422,16 @@
 	)
 	(wire
 		(pts
+			(xy 95.25 76.2) (xy 140.97 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3602216-3326-460c-b9ac-6842b9508c1e")
+	)
+	(wire
+		(pts
 			(xy 34.29 60.96) (xy 34.29 57.15)
 		)
 		(stroke
@@ -1353,6 +1439,16 @@
 			(type default)
 		)
 		(uuid "f5186d0f-044e-4606-aae4-89f01fdeba66")
+	)
+	(wire
+		(pts
+			(xy 86.36 74.93) (xy 154.94 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "face5161-3980-4b99-b613-44cad6498d9a")
 	)
 	(wire
 		(pts
@@ -1388,6 +1484,75 @@
 		(uuid "19124067-7560-478d-9b91-edd9a675b46b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 34.29 21.4553 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Boost Ground (V-)"
+		(shape input)
+		(at 208.28 123.19 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "625f7a90-d8ac-45da-8962-64c7ac90acd5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 230.0048 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Boost Output (Vout)"
+		(shape input)
+		(at 205.74 60.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "64ca5326-0908-48cc-8fdf-f214e3e9f1aa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 228.4928 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Battery Box Vin (Connectors)"
+		(shape input)
+		(at 34.29 104.14 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "6b374f59-2a02-4dd2-8303-85d7d0f8be97")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 72.4971 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1671,85 +1836,6 @@
 		)
 	)
 	(symbol
-		(lib_id "2024-09-27_13-12-28-eagle-import:LM2735XMF/NOPBLM2735XMF/NOPB")
-		(at 125.73 91.44 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c48048f1-4ea9-4697-b466-01546fbabcb2")
-		(property "Reference" "U11"
-			(at 125.73 91.44 0)
-			(effects
-				(font
-					(size 2 1.7)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Value" "LM2735X"
-			(at 125.73 95.25 0)
-			(effects
-				(font
-					(size 2 1.7)
-				)
-				(justify bottom)
-			)
-		)
-		(property "Footprint" "Boost Converter Chip:MF05A"
-			(at 125.73 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 125.73 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 125.73 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "be26c855-b9ce-4944-a618-c322bfabeadf")
-		)
-		(pin "2"
-			(uuid "e5be112f-f585-49b5-a065-863a859820db")
-		)
-		(pin "3"
-			(uuid "9aa74688-3634-42ef-9747-c5eed69630e3")
-		)
-		(pin "4"
-			(uuid "7c930eb1-5e07-4edb-818a-3dd4cffb6f77")
-		)
-		(pin "5"
-			(uuid "d77d5a39-27e8-49a3-8f19-ced362f1e4ca")
-		)
-		(instances
-			(project "PCB desing"
-				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9/75f61d54-82fa-43c7-a51b-df767089e132"
-					(reference "U11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_US")
 		(at 172.72 69.85 90)
 		(unit 1)
@@ -2026,8 +2112,87 @@
 		)
 	)
 	(symbol
+		(lib_id "Boost Chip:LM2735XMF_NOPB")
+		(at 95.25 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e6c44572-c954-4bec-9658-482a48097354")
+		(property "Reference" "U5"
+			(at 123.19 76.2 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "LM2735XMF/NOPB"
+			(at 123.19 78.74 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "Boost:MF05A"
+			(at 95.25 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "LM2735XMF/NOPB"
+			(at 95.25 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 95.25 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "0e721b63-2a89-4ed5-be31-7848c96dbc00")
+		)
+		(pin "3"
+			(uuid "ab3533ff-bf90-4608-9977-7abea29b7792")
+		)
+		(pin "5"
+			(uuid "42ef528b-a0c2-44be-b11c-4709961e4b34")
+		)
+		(pin "1"
+			(uuid "5c4e3651-82fe-44e2-b1af-77a2c553deaa")
+		)
+		(pin "2"
+			(uuid "96ad4654-2f7f-4794-af3a-5921d4cbffa3")
+		)
+		(instances
+			(project "PCB desing"
+				(path "/eb9a8801-b205-4599-90e8-b0089b4de1f9/75f61d54-82fa-43c7-a51b-df767089e132"
+					(reference "U5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
-		(at 86.36 82.55 0)
+		(at 86.36 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2036,7 +2201,7 @@
 		(fields_autoplaced yes)
 		(uuid "ef7aedfe-8c19-40e9-9c16-0a5a10098ffe")
 		(property "Reference" "R1"
-			(at 88.9 81.2799 0)
+			(at 88.9 69.8499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2045,7 +2210,7 @@
 			)
 		)
 		(property "Value" "10k Ohms"
-			(at 88.9 83.8199 0)
+			(at 88.9 72.3899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2054,7 +2219,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 87.376 82.804 90)
+			(at 87.376 71.374 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2063,7 +2228,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 86.36 82.55 0)
+			(at 86.36 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2072,7 +2237,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 86.36 82.55 0)
+			(at 86.36 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -745,6 +745,12 @@
 		(color 0 0 0 0)
 		(uuid "ef01542b-c513-4d58-9dba-4a6320653e83")
 	)
+	(junction
+		(at 160.02 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f5534aed-ce86-4942-8593-9ae954f3c382")
+	)
 	(wire
 		(pts
 			(xy 72.39 135.89) (xy 133.35 135.89)
@@ -834,6 +840,16 @@
 			(type default)
 		)
 		(uuid "48ca759e-b5b4-46b7-8c93-af8c517e8fcf")
+	)
+	(wire
+		(pts
+			(xy 160.02 78.74) (xy 160.02 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64924080-6326-480a-acc2-bf7f77f4ddfa")
 	)
 	(wire
 		(pts
@@ -947,7 +963,7 @@
 		)
 		(uuid "33d2373b-9b1f-48d5-a6c3-3ead714601b1")
 	)
-	(global_label "Micro UART RX PA1 (Pin 15)"
+	(global_label "Micro GPS RX"
 		(shape input)
 		(at 107.95 106.68 180)
 		(fields_autoplaced yes)
@@ -960,7 +976,7 @@
 		)
 		(uuid "19fb69e3-52c1-4b4f-82b9-08c0c5d56384")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 76.7303 106.68 0)
+			(at 91.2446 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -970,7 +986,30 @@
 			)
 		)
 	)
-	(global_label "Buck Boost Pin One (Vout)"
+	(global_label "GND"
+		(shape input)
+		(at 160.02 78.74 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(bold yes)
+			)
+			(justify left)
+		)
+		(uuid "97eeac3d-1221-46ac-96df-2f1a415db972")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 167.3517 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "Buck-Boost Voltage"
 		(shape input)
 		(at 101.6 80.01 180)
 		(fields_autoplaced yes)
@@ -983,7 +1022,7 @@
 		)
 		(uuid "9ddcc54e-d0c7-4b41-86d3-e78ecf4d6e0e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 72.0133 80.01 0)
+			(at 78.7262 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -993,7 +1032,7 @@
 			)
 		)
 	)
-	(global_label "Micro UART TX PA0 (Pin 14)"
+	(global_label "Micro GPS TX"
 		(shape input)
 		(at 107.95 111.76 180)
 		(fields_autoplaced yes)
@@ -1006,7 +1045,7 @@
 		)
 		(uuid "b6f3825d-8a1c-424a-ad7e-04d5d7c8f8f2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 77.0327 111.76 0)
+			(at 91.547 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
