@@ -4032,6 +4032,16 @@
 		)
 		(uuid "0cb81830-0575-4618-9373-1d1e7772f7ad")
 	)
+	(text "Clock\n"
+		(exclude_from_sim no)
+		(at 240.03 94.488 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "40cb3abe-c650-4509-8c83-9b0ae6f3b55d")
+	)
 	(text "Debuggin LED'S"
 		(exclude_from_sim no)
 		(at 79.502 87.884 0)
@@ -4041,6 +4051,16 @@
 			)
 		)
 		(uuid "484b9c7e-780b-4541-9d45-c60e80b62c9e")
+	)
+	(text "Data In"
+		(exclude_from_sim no)
+		(at 240.792 81.534 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9f1e7d41-4721-43c0-97dc-d72d4771a487")
 	)
 	(text "3VA"
 		(exclude_from_sim no)
