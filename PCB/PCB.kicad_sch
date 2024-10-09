@@ -6385,6 +6385,16 @@
 	)
 	(wire
 		(pts
+			(xy 168.91 182.88) (xy 168.91 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a4c88ef-855f-43a9-8cfc-8b16cf5d2b36")
+	)
+	(wire
+		(pts
 			(xy 21.59 27.94) (xy 21.59 87.63)
 		)
 		(stroke
@@ -9316,7 +9326,7 @@
 	)
 	(global_label "Ground"
 		(shape output)
-		(at 168.91 168.91 270)
+		(at 168.91 182.88 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9326,7 +9336,7 @@
 		)
 		(uuid "d5c0f829-5609-4911-87c2-f143acca6f3c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 168.91 178.5474 90)
+			(at 168.91 192.5174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
