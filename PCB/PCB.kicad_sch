@@ -8997,6 +8997,16 @@
 		)
 		(uuid 6827cdab-6d78-477f-aed4-0e13023dbcd7)
 	)
+	(text "External Clock (Not in use)\n"
+		(exclude_from_sim no)
+		(at 142.494 96.266 0)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+		)
+		(uuid "1d45f312-d9aa-4633-8912-54f675aefb4f")
+	)
 	(text "Buck-Boost"
 		(exclude_from_sim no)
 		(at 66.548 44.704 0)
