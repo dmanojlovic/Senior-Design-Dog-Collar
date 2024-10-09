@@ -8987,15 +8987,25 @@
 		)
 		(uuid 6827cdab-6d78-477f-aed4-0e13023dbcd7)
 	)
-	(text "Figure out how to implement the coupling capacitors into the schematic"
+	(text "Buck-Boost"
 		(exclude_from_sim no)
-		(at 233.172 172.974 0)
+		(at 66.548 44.704 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
-		(uuid "562c33dc-0a28-4348-b5a8-6f196f6dc440")
+		(uuid "208f6c02-bfa8-4963-88a7-5764eeaa183b")
+	)
+	(text "Boost\n"
+		(exclude_from_sim no)
+		(at 209.804 31.242 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "316a2a16-9b77-4718-b497-95bb67ef374e")
 	)
 	(text "Battery \"Box\""
 		(exclude_from_sim no)
