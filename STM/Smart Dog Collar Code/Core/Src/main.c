@@ -51,7 +51,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-void LoadAudioFiles(void);
 
 /* USER CODE END PV */
 
@@ -73,18 +72,7 @@ PUTCHAR_PROTOTYPE
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-AudioElement AudioFile;
-uint8_t AudioFileToPlay = 0;
 
-uint8_t rx_data[1];
-void led2_test(void);
-
-uint8_t rx_data_gps[100]; //
-
-uint8_t tx_data_lora[4] = {'A', 'T', '\r', '\n'}; //"AT\r\n";
-uint8_t rx_data_lora[5]; //expects "+OK\r\n"
-
-uint16_t dac_value=0;
 /* USER CODE END 0 */
 
 /**
@@ -121,129 +109,25 @@ int main(void)
   MX_UART5_Init();
   MX_TIM2_Init();
   MX_DAC1_Init();
+  MX_TIM8_Init();
+  MX_USART1_UART_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  // uint8_t test = 5;
-  // printf("Characters: %c %c\n\r", 'a', 65);
-  // printf("Decimals: %d %ld\n\r", 1977, 650000L);
-  // printf("Preceding with blanks: %10d\n\r", 1977);
-  // printf("Preceding with zeros: %010d\n\r", 1977);
-  // printf("Some different radices: %d %x %o %#x %#o\n\r", 100, 100, 100, 100, 100);
-  // printf("floats: %4.2f %+.0e %E\n\r", 3.1416, 3.1416, 3.1416);
-  // printf("Width trick: %*d\n\r", 5, 10);
-  // printf("%s\n\r", "A string");
-  // printf("unsingned int8 = %d\n\r", test);
-  // printf("END OF PRINTS\r\n");
-
   printf("START OF CODE\r\n\n");
-  // led2_test();
-
-  // HAL_DAC_Start(&hdac1, DAC_CHANNEL_2);
-
-  LoadAudioFiles();
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  // capture/compare registers (CC1 PWM duty 50%)
-//  	HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
-//  	HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, 0x7FF);
-
-	TIM2->CCR1 = DEFAULT_STARTUP_VAL;
-	TIM2->CCR2 = DEFAULT_STARTUP_VAL;
-	LL_TIM_EnableIT_UPDATE(TIM2);
-	TIM2->CCER |= TIM_CCER_CC2E | TIM_CCER_CC1E;
-	LL_TIM_EnableCounter(TIM2);
   while (1)
   {
-    //print character in console ######################################################################
-    // HAL_UART_Receive_IT(&huart2, rx_data, 1); //receive character from 
-
-    // LoRA ###########################################################################################
-    //  HAL_UART_Transmit_IT(&huart5, tx_data_lora, 4);
-    // HAL_UART_Transmit(&huart5, tx_data_lora, 4, 1000);
-    // if(HAL_UART_Receive(&huart5, rx_data_lora, 5, 1000)==HAL_OK) //if transfer is successful
-    // { 
-    //   HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
-    //   __NOP(); //You need to toggle a breakpoint on this line!
-    // } else {
-    //   printf("Transfer Failed\n\r");
-    //   __NOP();
-    // }
-
-    //GPS ############################################################################################
-    // HAL_UART_Receive_IT(&huart5, rx_data_gps, 1000);
-    // for(int i = 0; i < 100; i++){
-    //   printf("%c", rx_data_gps[i]);
-    // }
-    // printf("\n");
-
-    //Flashing LED ###################################################################################
-    // GPIOA->ODR ^= 0x0020;
-
-    //DAC ############################################################################################
-    // HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_2, DAC_ALIGN_12B_R, dac_value);
-    // if (dac_value < 4095) {
-    //   dac_value++;
-    // } else {
-    //   dac_value=0;
-    // }
-    // printf("DAC value: %d\n\r", dac_value);
-
-    //PWM audio ######################################################################################
-//    if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)) //play audio while button is pushed
-//		{
-//			while(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13));
-//			if(AudioFileToPlay>=1)
-//			{
-//				AudioFileToPlay = 0;
-//			}else
-//			{
-//				AudioFileToPlay++;
-//			}
-//			/* Disable the TIM2 Interrupt */
-//			NVIC_EnableIRQ(TIM2_IRQn);
-//			// stop the timer
-//			LL_TIM_EnableCounter(TIM2);
-//		}
-
-    if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)){ //test if button is pushed
-      // GPIOC->BSRR = GPIO_BSRR_BS3;
-      GPIOA->BSRR = GPIO_BSRR_BS5;
-    }
-    else{
-      // GPIOC->BSRR = GPIO_BSRR_BR3;
-      GPIOA->BSRR = GPIO_BSRR_BR5;
-    }
-
-		// HAL_Delay(100);
-
-
-//     HAL_Delay(1000);
+    
+	HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)) //play audio while button is pushed
-	{
-		while(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13));
 
-		if(AudioFileToPlay>=1)
-		{
-			AudioFileToPlay = 0;
-		}else
-		{
-			AudioFileToPlay++;
-		}
-		/* Disable the TIM2 Interrupt */
-		NVIC_EnableIRQ(TIM2_IRQn);
-//		NVIC_DisableIRQ(TIM2_IRQn);
-		// stop the timer
-		LL_TIM_EnableCounter(TIM2);
-//		LL_TIM_DisableCounter(TIM2);
-	}
-    HAL_Delay(100);
 
   }
   /* USER CODE END 3 */
@@ -302,81 +186,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-  /* Prevent unused argument(s) compilation warning */
-  UNUSED(huart);
 
-  /* NOTE : This function should not be modified, when the callback is needed,
-            the HAL_UART_RxCpltCallback can be implemented in the user file.
-   */
-  if(huart->Instance == USART2){ //COM port for printing
-    if(rx_data[0] == '\r'){
-      uint8_t temp[1];
-      temp[0] = '\n';
-      HAL_UART_Transmit(&huart2, temp, 1, 10); 
-      HAL_UART_Transmit(&huart2, rx_data, 1, 10); 
-    }
-    else{
-      HAL_UART_Transmit(&huart2, rx_data, 1, 10); 
-    }
-  }
-  else if(huart->Instance == UART5){ //LoRa
-    printf("UART5 RX HERE\n\r");
-  } 
-  else if(huart->Instance == UART4){ //GPS
-    printf("UART4 RX HERE\n\r");
-  } 
-  else{
-    printf("ERROR: WRONG UART RX\n\r");
-  }
-  
-  
-}
-
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
-{
-  /* Prevent unused argument(s) compilation warning */
-  UNUSED(huart);
-
-  /* NOTE : This function should not be modified, when the callback is needed,
-            the HAL_UART_TxCpltCallback can be implemented in the user file.
-   */
-  if(huart->Instance == USART2){ //COM port for printing
-     printf("USART2 TX HERE\n\r");
-  }
-  else if(huart->Instance == UART5){ //LoRa
-    // printf("UART5 TX HERE\n\r");
-     if(HAL_UART_Receive(&huart5, rx_data_lora, 5, HAL_MAX_DELAY)==HAL_OK) //if transfer is successful
-    { 
-      HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
-      __NOP(); //You need to toggle a breakpoint on this line!
-    } else {
-      printf("Transfer Failed\n\r");
-      __NOP();
-    }
-  } 
-  else if(huart->Instance == UART4){ //GPS
-    printf("UART4 TX HERE\n\r");
-  } 
-  else{
-    printf("ERROR: WRONG UART TX\n\r");
-  }
-
-}
-
-// void led2_test(){
-//   RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
-//   GPIOA->MODER &= 0xfffff3ff;
-//   GPIOA->MODER |= GPIO_MODER_MODE5_0; //0x00000400
-//   GPIOA->BSRR = 1 << 5;
-// }
-
-void LoadAudioFiles(void)
-{
-	AudioFile.AudioFiles[0] = (uint32_t)&Stop_Command_3;
-	AudioFile.AudioSize[0] = NELEMS(Stop_Command_3);
-}
 
 /* USER CODE END 4 */
 
