@@ -6701,6 +6701,16 @@
 	)
 	(wire
 		(pts
+			(xy 16.51 -16.51) (xy 16.51 -8.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "113e1e82-4147-4302-b303-5e1c14e2fe66")
+	)
+	(wire
+		(pts
 			(xy 173.99 68.58) (xy 173.99 74.93)
 		)
 		(stroke
@@ -6781,7 +6791,7 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 124.46) (xy 72.39 124.46)
+			(xy 63.5 124.46) (xy 67.31 124.46)
 		)
 		(stroke
 			(width 0)
@@ -7068,6 +7078,16 @@
 			(type solid)
 		)
 		(uuid "4558ca48-a51c-4ae3-9634-255592ed2bb7")
+	)
+	(wire
+		(pts
+			(xy 74.93 124.46) (xy 80.01 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "475abb01-45b6-4c96-aedd-3c8db8874c74")
 	)
 	(wire
 		(pts
@@ -7841,7 +7861,7 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 106.68) (xy 72.39 106.68)
+			(xy 63.5 106.68) (xy 68.58 106.68)
 		)
 		(stroke
 			(width 0)
@@ -7858,16 +7878,6 @@
 			(type default)
 		)
 		(uuid "a28319ca-ae0b-4381-ab06-5575c3ff86bc")
-	)
-	(wire
-		(pts
-			(xy 16.51 -16.51) (xy 16.51 -8.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a31c4d32-07df-4193-bd38-5f557ebe2db6")
 	)
 	(wire
 		(pts
@@ -7911,7 +7921,7 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 115.57) (xy 72.39 115.57)
+			(xy 63.5 115.57) (xy 68.58 115.57)
 		)
 		(stroke
 			(width 0)
@@ -8251,13 +8261,23 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 133.35) (xy 72.39 133.35)
+			(xy 63.5 133.35) (xy 67.31 133.35)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "ce580dc3-a97e-4452-90f5-ef7d80d5592a")
+	)
+	(wire
+		(pts
+			(xy 76.2 106.68) (xy 80.01 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0215a29-998d-4bb4-ab28-52c5f32495c5")
 	)
 	(wire
 		(pts
@@ -8471,6 +8491,16 @@
 	)
 	(wire
 		(pts
+			(xy 76.2 115.57) (xy 80.01 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e176b666-a2a8-479b-8702-41b303762b7a")
+	)
+	(wire
+		(pts
 			(xy 27.94 52.07) (xy 27.94 71.12)
 		)
 		(stroke
@@ -8478,6 +8508,16 @@
 			(type solid)
 		)
 		(uuid "e4a17170-cc1e-4215-bb89-e840adc44f1f")
+	)
+	(wire
+		(pts
+			(xy 74.93 133.35) (xy 80.01 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5386c60-ca52-456e-bbf0-e1f0ecd6fb1f")
 	)
 	(wire
 		(pts
@@ -9048,6 +9088,17 @@
 		)
 		(uuid "0373a4bd-1b21-4fcc-ae68-d9111911aac1")
 	)
+	(label "L1 Buck"
+		(at 43.18 41.91 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0c8abfc9-c10d-4aa4-b03b-c247195bdea1")
+	)
 	(label "RST"
 		(at 140.97 60.96 0)
 		(fields_autoplaced yes)
@@ -9080,6 +9131,17 @@
 			(justify left bottom)
 		)
 		(uuid "21caf1e6-4878-4a6b-8d44-bb2bbe6e14ef")
+	)
+	(label "L2 Buck"
+		(at 88.9 41.91 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "24cc6212-6c69-4037-b0d4-1e6488c57222")
 	)
 	(label "Speaker"
 		(at 274.32 90.17 0)
@@ -9124,6 +9186,17 @@
 			(justify left bottom)
 		)
 		(uuid "369fdb37-f3e9-4f61-9871-5444326d8ddf")
+	)
+	(label "SW Boost"
+		(at 181.61 31.75 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "37f9165a-8bb4-4786-8bd4-252670295adc")
 	)
 	(label "SWDIO"
 		(at 189.23 113.03 0)
@@ -9201,6 +9274,17 @@
 			(justify left bottom)
 		)
 		(uuid "4b271429-f343-436c-9fad-1bdfcdc16c7b")
+	)
+	(label "D2LED"
+		(at 77.47 115.57 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4d0ba5ba-eaac-48f3-933e-ba0bf1f8486d")
 	)
 	(label "Debug 4"
 		(at 187.96 125.73 0)
@@ -9323,6 +9407,17 @@
 		)
 		(uuid "9340bf28-7164-431b-ab4b-6ccff4dbf987")
 	)
+	(label "D1LED"
+		(at 77.47 106.68 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9576a183-24fe-4ade-ac68-5cfa795415e0")
+	)
 	(label "Amp Out"
 		(at 245.11 105.41 0)
 		(fields_autoplaced yes)
@@ -9356,6 +9451,17 @@
 		)
 		(uuid "b8b8d1a6-cfcf-4098-a466-a606852fe626")
 	)
+	(label "FB Boost"
+		(at 238.76 41.91 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "bce47c89-5bf9-4d5b-9641-e7177771ea5e")
+	)
 	(label "Clock"
 		(at 132.08 113.03 0)
 		(fields_autoplaced yes)
@@ -9378,6 +9484,17 @@
 		)
 		(uuid "c1231847-f037-4108-adac-5192579858fd")
 	)
+	(label "D3LED"
+		(at 77.47 124.46 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d82ddf08-48e7-4fb6-9eba-6b8d8d91aa22")
+	)
 	(label "Clock"
 		(at 142.24 90.17 0)
 		(fields_autoplaced yes)
@@ -9389,6 +9506,17 @@
 		)
 		(uuid "de58fab3-5bb2-4f17-bb63-57b49a49a938")
 	)
+	(label "D4LED"
+		(at 77.47 133.35 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "df93b490-126b-4386-b036-7ebc0642bd77")
+	)
 	(label "Batteries"
 		(at 19.05 39.37 0)
 		(fields_autoplaced yes)
@@ -9399,6 +9527,17 @@
 			(justify left bottom)
 		)
 		(uuid "dffa507e-d4aa-4d5d-9816-6cbde9e30e6b")
+	)
+	(label "VIN Boost"
+		(at 237.49 30.48 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e0216bd7-a1c0-491d-8256-60c4d57ce014")
 	)
 	(label "LoRa TX"
 		(at 34.29 185.42 90)
@@ -9465,6 +9604,17 @@
 			(justify left bottom)
 		)
 		(uuid "f8f7b446-cb28-463e-bc13-947b266efb3f")
+	)
+	(label "EN Boost"
+		(at 240.03 38.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fd3a1c62-f329-4a02-bb93-70a4c4ba79fa")
 	)
 	(label "RST"
 		(at 142.24 80.01 0)
@@ -9701,7 +9851,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 76.2 133.35 0)
+		(at 71.12 133.35 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9710,7 +9860,7 @@
 		(fields_autoplaced yes)
 		(uuid "0b115969-1c3b-4371-9298-ec9d7d2abe53")
 		(property "Reference" "D6"
-			(at 74.6125 127 0)
+			(at 69.5325 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9718,7 +9868,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 74.6125 129.54 0)
+			(at 69.5325 129.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9726,7 +9876,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
-			(at 76.2 133.35 0)
+			(at 71.12 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9735,7 +9885,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 76.2 133.35 0)
+			(at 71.12 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9744,7 +9894,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 76.2 133.35 0)
+			(at 71.12 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9976,7 +10126,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "1635b15e-355d-45a6-8b2c-f4faebac8157")
 		(property "Reference" "BT1"
@@ -10526,7 +10676,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 255.524 29.464 90)
 			(effects
 				(font
@@ -10638,7 +10788,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 76.2 106.68 0)
+		(at 72.39 106.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10647,7 +10797,7 @@
 		(fields_autoplaced yes)
 		(uuid "2732ca56-9f07-415f-85bd-9948593e8bb8")
 		(property "Reference" "D2"
-			(at 74.6125 100.33 0)
+			(at 70.8025 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10655,7 +10805,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 74.6125 102.87 0)
+			(at 70.8025 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10663,7 +10813,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
-			(at 76.2 106.68 0)
+			(at 72.39 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10672,7 +10822,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 76.2 106.68 0)
+			(at 72.39 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10681,7 +10831,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 76.2 106.68 0)
+			(at 72.39 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11048,10 +11198,9 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "378e511b-0c9b-45c8-b137-1c261e95d0b6")
 		(property "Reference" "R5"
-			(at 245.11 148.59 0)
+			(at 245.11 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11059,7 +11208,7 @@
 			)
 		)
 		(property "Value" "0 Ohm"
-			(at 245.11 151.13 0)
+			(at 244.856 155.194 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11180,7 +11329,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 76.2 124.46 0)
+		(at 71.12 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11189,7 +11338,7 @@
 		(fields_autoplaced yes)
 		(uuid "3df461de-dc89-471b-9b44-0f793d9eedc6")
 		(property "Reference" "D5"
-			(at 74.6125 118.11 0)
+			(at 69.5325 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11197,7 +11346,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 74.6125 120.65 0)
+			(at 69.5325 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11205,7 +11354,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
-			(at 76.2 124.46 0)
+			(at 71.12 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11214,7 +11363,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 76.2 124.46 0)
+			(at 71.12 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11223,7 +11372,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 76.2 124.46 0)
+			(at 71.12 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11274,7 +11423,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_EH_B4B-EH-A_1x04_P2.50mm_Vertical"
 			(at 146.05 26.67 0)
 			(effects
 				(font
@@ -11394,7 +11543,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "467718ed-5e96-4e05-8042-57bdd377028c")
 		(property "Reference" "LS1"
@@ -11938,12 +12087,11 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "5e8f003d-fe59-4c14-b57f-72df152756d4")
 		(property "Reference" "J1"
-			(at 22.86 8.89 90)
+			(at 25.654 4.318 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12028,7 +12176,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Boost:MF05A"
+		(property "Footprint" "Boost Converter Chip:MF05A"
 			(at 181.61 36.83 0)
 			(effects
 				(font
@@ -12447,7 +12595,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 244.856 49.784 90)
 			(effects
 				(font
@@ -12651,7 +12799,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Buck-Boost:DRC0010J"
+		(property "Footprint" "Buck-Boost Converter Chip:DRC0010J"
 			(at 66.04 62.23 0)
 			(effects
 				(font
@@ -12794,7 +12942,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "87be4901-d11a-48fb-ab4d-d283bef6f591")
 		(property "Reference" "BT3"
@@ -13542,7 +13690,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a8a49cb5-8ce0-47e3-810d-76b0b63615c0")
@@ -13747,7 +13895,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "ad696657-cc77-4e77-a078-d5b58ebe2efe")
 		(property "Reference" "BT2"
@@ -14313,7 +14461,7 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 76.2 115.57 0)
+		(at 72.39 115.57 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14322,7 +14470,7 @@
 		(fields_autoplaced yes)
 		(uuid "ca8465bd-26b7-4e6e-8c6a-f3f98540da8d")
 		(property "Reference" "D4"
-			(at 74.6125 109.22 0)
+			(at 70.8025 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14330,7 +14478,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 74.6125 111.76 0)
+			(at 70.8025 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14338,7 +14486,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
-			(at 76.2 115.57 0)
+			(at 72.39 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14347,7 +14495,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 76.2 115.57 0)
+			(at 72.39 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14356,7 +14504,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 76.2 115.57 0)
+			(at 72.39 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14874,7 +15022,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 241.046 30.734 90)
 			(effects
 				(font

@@ -1,4 +1,116 @@
-23837902446271712
+23889742271094550
+Adafruit Ultimate GPS Hat
+1X01-CLEANBIG
+
+
+0
+1
+1
+Adafruit Ultimate GPS Hat
+1X02_ROUND
+
+
+0
+2
+2
+Adafruit Ultimate GPS Hat
+1X23_ROUND_70MIL
+
+
+0
+23
+23
+Adafruit Ultimate GPS Hat
+0805
+0805 (2012 Metric)
+
+0
+2
+2
+Adafruit Ultimate GPS Hat
+0805-NO
+
+
+0
+2
+2
+Adafruit Ultimate GPS Hat
+ADAFRUIT_TEXT_20MM
+
+
+0
+0
+0
+Adafruit Ultimate GPS Hat
+CHIPLED_0805
+<b>CHIPLED 0805</b>
+
+0
+2
+2
+Adafruit Ultimate GPS Hat
+CR1220
+
+
+0
+3
+3
+Adafruit Ultimate GPS Hat
+FGPMMOPA6H
+
+
+0
+20
+20
+Adafruit Ultimate GPS Hat
+FIDUCIAL_1MM
+
+
+0
+1
+1
+Adafruit Ultimate GPS Hat
+PCBFEAT-REV-056
+<b>Revision Level Field</b> - 56 mil<p>{return}Set version with global board attribute '>REV'
+
+0
+0
+0
+Adafruit Ultimate GPS Hat
+PIHATLOGO
+
+
+0
+0
+0
+Adafruit Ultimate GPS Hat
+PI_HAT_SLOTS
+
+
+0
+40
+40
+Adafruit Ultimate GPS Hat
+SOIC8_150MIL
+<b>Small Outline IC - 150mil Wide</b>
+
+0
+8
+8
+Adafruit Ultimate GPS Hat
+SOLDERJUMPER_CLOSEDWIRE
+
+
+0
+3
+3
+Adafruit Ultimate GPS Hat
+U.FL
+
+
+0
+4
+4
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -356,6 +468,34 @@ battery CR-3032 coin cell vertical
 0
 2
 2
+Boost Converter Chip
+MF05A
+
+LM2735XMF/NOPB 
+0
+5
+5
+Boost Converter Chip
+MF05A-L
+
+LM2735XMF/NOPB 
+0
+5
+5
+Boost Converter Chip
+MF05A-M
+
+LM2735XMF/NOPB 
+0
+5
+5
+Buck-Boost Converter Chip
+DRC0010J
+
+TPS63001DRCR 
+0
+15
+12
 Button_Switch_Keyboard
 SW_Cherry_MX_1.00u_PCB
 Cherry MX keyswitch, 1.00u, PCB mount, http://cherryamericas.com/wp-content/uploads/2014/12/mx_cat.pdf
@@ -57728,6 +57868,13 @@ Fuse Fuseholder TR5 Littelfuse/Wickmann No. 460 No560
 0
 2
 2
+GPS Module
+FGPMMOPA6H
+
+
+0
+20
+20
 Heatsink
 Heatsink_35x26mm_1xFixation3mm_Fischer-SK486-35
 Heatsink, 35mm x 26mm, 1x Fixation 3mm, Fischer SK486-35
@@ -64693,6 +64840,20 @@ Yellow 5381 Series LED
 0
 2
 2
+LM386
+LM386
+
+LM386M-1/NOPB 
+0
+8
+8
+LoRa Chip
+LoRa Chip
+
+
+0
+6
+6
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
@@ -84608,6 +84769,20 @@ TO-264-5 Vertical RM 3.81mm
 0
 5
 5
+Polarized Cap 1000 uF
+PCAP_10x10-ELECT_NCA
+
+UWT1A102MNL1GS 
+0
+2
+2
+Polarized Caps (.1 - 100 uF)
+CAP_UZE_4X3P9_NCH
+
+UZG1H0R1MCL1GB 
+0
+2
+2
 Potentiometer_SMD
 Potentiometer_ACP_CA6-VSMD_Vertical
 Potentiometer, vertical, ACP CA6-VSMD, http://www.acptechnologies.com/wp-content/uploads/2017/06/01-ACP-CA6.pdf
@@ -88976,6 +89151,20 @@ rotary encoder illuminated switch vertical
 0
 9
 8
+STM32 Chip
+LQFP-64_10x10mm_P0.5mm
+LQFP, 64 Pin (https://www.analog.com/media/en/technical-documentation/data-sheets/ad7606_7606-6_7606-4.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
+LQFP QFP
+0
+64
+64
+Schottky
+Schottky
+
+CMS06TE12L_Q_M 
+0
+2
+2
 Sensor
 ASAIR_AM2302_P2.54mm_Lead2.75mm_TabDown
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf
@@ -96739,3 +96928,24 @@ Varistor VF
 0
 2
 2
+footprints
+M08A_TEX
+
+LM386M-1/NOPB 
+0
+8
+8
+footprints
+M08A_TEX-L
+
+LM386M-1/NOPB 
+0
+8
+8
+footprints
+M08A_TEX-M
+
+LM386M-1/NOPB 
+0
+8
+8
