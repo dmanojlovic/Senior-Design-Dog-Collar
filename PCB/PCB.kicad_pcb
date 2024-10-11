@@ -82,7 +82,7 @@
 	(net 0 "")
 	(net 1 "Net-(U5-FB)")
 	(net 2 "unconnected-(U1-PA1-Pad15)")
-	(net 3 "Net-(D1-A)")
+	(net 3 "/Batteries")
 	(net 4 "Net-(U4-L1)")
 	(net 5 "Net-(U4-L2)")
 	(net 6 "Net-(U5-EN)")
@@ -1758,7 +1758,7 @@
 			(size 1 5.5)
 			(layers "F.Cu" "F.Paste" "F.Mask")
 			(roundrect_rratio 0.25)
-			(net 3 "Net-(D1-A)")
+			(net 3 "/Batteries")
 			(pinfunction "Pin_2")
 			(pintype "passive")
 			(uuid "c3372083-3892-49a3-8ac2-59de41040a09")
@@ -7258,7 +7258,7 @@
 			(at 2.1209 0 270)
 			(size 1.0668 1.8542)
 			(layers "F.Cu" "F.Paste" "F.Mask")
-			(net 3 "Net-(D1-A)")
+			(net 3 "/Batteries")
 			(pinfunction "A")
 			(pintype "passive")
 			(uuid "c1018c4e-05ec-4f71-af16-f825ff3879f3")
@@ -13489,7 +13489,7 @@
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R5"
-			(at 0 1.65 360)
+			(at 0 1.65 0)
 			(layer "B.SilkS")
 			(uuid "78dfaa9f-cd4e-4c90-ace1-ea64604d107b")
 			(effects
@@ -13501,7 +13501,7 @@
 			)
 		)
 		(property "Value" "0 Ohm"
-			(at 0 -1.65 360)
+			(at 0 -1.65 0)
 			(layer "B.Fab")
 			(uuid "01a72d5b-ee1e-4577-9460-a6898fe24d3f")
 			(effects
@@ -13660,7 +13660,7 @@
 			(uuid "4be33d4a-6034-40df-a385-650d2b9b5d80")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "81082cd7-81cd-48bc-8e0c-27ec178f21a0")
 			(effects
@@ -14367,7 +14367,7 @@
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor handsolder")
 		(property "Reference" "R4"
-			(at 0 1.65 360)
+			(at 0 1.65 0)
 			(layer "B.SilkS")
 			(uuid "735c197f-752a-4e3e-af56-ee0d7583851c")
 			(effects
@@ -14379,7 +14379,7 @@
 			)
 		)
 		(property "Value" "0 Ohm"
-			(at 0 -1.65 360)
+			(at 0 -1.65 0)
 			(layer "B.Fab")
 			(uuid "ecd2818a-ffd0-4ee3-9f32-031cedd3ab69")
 			(effects
@@ -14538,7 +14538,7 @@
 			(uuid "78dedbc5-67af-4a53-b01a-bcbb96b81b5e")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "47f9bb19-5f43-47be-a4ff-549e8909a5e0")
 			(effects
@@ -18869,12 +18869,12 @@
 		(uuid "ea3a0b03-012a-47b8-ae34-2b07c26ac9ab")
 	)
 	(segment
-		(start 117.61124 89.705902)
-		(end 117.613019 89.704123)
+		(start 122.5 89.5)
+		(end 117.817142 89.5)
 		(width 0.25)
 		(layer "B.Cu")
 		(net 70)
-		(uuid "193d1295-ab1e-40e0-9610-b259df020cca")
+		(uuid "0eef42ab-b184-4ae9-a7ae-14cf62740e4d")
 	)
 	(segment
 		(start 143 75.5)
@@ -18915,6 +18915,14 @@
 		(layer "B.Cu")
 		(net 70)
 		(uuid "bd922055-39bf-4bc0-847c-be86daac78a1")
+	)
+	(segment
+		(start 117.817142 89.5)
+		(end 117.61124 89.705902)
+		(width 0.25)
+		(layer "B.Cu")
+		(net 70)
+		(uuid "c1fc5ac9-66b9-4093-a906-bb553154aa7f")
 	)
 	(segment
 		(start 132.925681 83.27826)
