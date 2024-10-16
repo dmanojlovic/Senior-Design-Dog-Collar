@@ -15651,7 +15651,7 @@
 		(layer "Edge.Cuts")
 		(uuid "2cf4341b-4ac8-415f-88f8-496bae24475f")
 	)
-	(gr_text "ECE 477 Team 5: Smart Dog Collar\nAndrew Wu\nNick Durnil\nDavid Manojlovic\nEthan James\nVersion 3"
+	(gr_text "ECE 477 Team 5: Smart Dog Collar\nAndrew Wu\nNick Durnil\nDavid Manojlovic\nEthan James\nVersion 4"
 		(at 215.9 140.97 0)
 		(layer "F.SilkS")
 		(uuid "17ef523c-a344-44e4-bfc9-c51d374822e1")
