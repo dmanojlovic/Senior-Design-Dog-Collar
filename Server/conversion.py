@@ -20,8 +20,8 @@ def NMEAConv(lng :str, lat :str):
     decLng = float(lng[3:10]) 
     decLat = float(lat[2:9])
 
-    lngDir = lng[12]
-    latDir = lat[11]
+    lngDir = lng[11]
+    latDir = lat[10]
 
     decLng /= 60
     decLat /= 60
@@ -36,7 +36,7 @@ def NMEAConv(lng :str, lat :str):
 
     return outLng, outLat
 
-lng, lat = NMEAConv("08654.48396,W", "4025.55214,N")
+lng, lat = NMEAConv("08654.8235,W", "4025.7222,N")
 
 data['location']['lng'] = lng
 data['location']['lat'] = lat
