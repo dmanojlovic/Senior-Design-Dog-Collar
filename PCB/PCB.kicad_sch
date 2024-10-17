@@ -6388,12 +6388,6 @@
 		(uuid "ceb2f48b-5d78-476b-9b1b-9251862127f8")
 	)
 	(junction
-		(at 218.44 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "cee8f28f-6264-4d9a-b62f-b5b5fe4c9a89")
-	)
-	(junction
 		(at 243.84 41.91)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6601,7 +6595,7 @@
 	)
 	(wire
 		(pts
-			(xy 218.44 96.52) (xy 218.44 102.87)
+			(xy 218.44 96.52) (xy 218.44 107.95)
 		)
 		(stroke
 			(width 0)
@@ -7251,7 +7245,7 @@
 	)
 	(wire
 		(pts
-			(xy 218.44 102.87) (xy 229.87 102.87)
+			(xy 217.17 102.87) (xy 229.87 102.87)
 		)
 		(stroke
 			(width 0)
@@ -7661,7 +7655,7 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 102.87) (xy 210.82 102.87)
+			(xy 203.2 102.87) (xy 209.55 102.87)
 		)
 		(stroke
 			(width 0)
@@ -8098,16 +8092,6 @@
 			(type solid)
 		)
 		(uuid "aa738a8d-c1ea-4497-9af9-ddadd2dcd391")
-	)
-	(wire
-		(pts
-			(xy 218.44 102.87) (xy 218.44 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aa77aa51-0eaf-4a73-b225-7ce22a4651b9")
 	)
 	(wire
 		(pts
@@ -10307,7 +10291,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 214.63 102.87 90)
+		(at 213.36 102.87 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10316,7 +10300,7 @@
 		(fields_autoplaced yes)
 		(uuid "143a9809-abc1-4758-8935-39b1132b3e0b")
 		(property "Reference" "C11"
-			(at 214.63 96.52 90)
+			(at 213.36 96.52 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10324,7 +10308,7 @@
 			)
 		)
 		(property "Value" ".1 uF"
-			(at 214.63 99.06 90)
+			(at 213.36 99.06 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10332,7 +10316,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 218.44 101.9048 0)
+			(at 217.17 101.9048 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10341,7 +10325,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 214.63 102.87 0)
+			(at 213.36 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10350,7 +10334,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 214.63 102.87 0)
+			(at 213.36 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
