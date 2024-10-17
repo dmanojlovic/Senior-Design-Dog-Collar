@@ -4,15 +4,16 @@
   <head>
     <title>Group 5</title>
 	  <link rel="stylesheet" href="styles.css">
+    <script src="collarCall.js"></script>
   </head>
   <body>
     <h1 style="padding-top:3%; padding-bottom:0;margin-bottom:1%;">Smart Dog Collar</h1>
     <h3 style="padding-top:0; margin-top:0;">ECE477 Team 5</h3>
     <h3 id="time"></h3>
     <div style="justify-content:center; display:flex;padding-bottom: 10px">
-      <button style="font-size:5vh; margin-right:10px">Buzzer</button>
-      <button style="font-size:5vh">Audio 1</button>
-      <button style="font-size:5vh; margin-left:10px">Audio 2</button>
+      <button style="font-size:5vh; margin-right:10px" onclick="test('Buzzer')">Buzzer</button>
+      <button style="font-size:5vh" onclick="test('Stop')">Stop</button>
+      <button style="font-size:5vh; margin-left:10px" onclick="test('Return')">Return</button>
     </div>
     <div id="map"></div>
     

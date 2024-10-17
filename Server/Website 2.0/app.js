@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 var fs = require('fs');
+const spawn = require("child_process").spawn;
 
 require('dotenv').config();
 
@@ -15,6 +16,14 @@ app.post("/geofence", (req, res) => {
     });
 	res.send("recieved");
 });
+
+app.post("/alarm", (req, res) => {
+	console.log(req.body["button"])
+	var pythonProcess = spawn('python', ['test.py', req.body["button"]])
+	pythonProcess.stdout.on('data', (data) => {
+		console.log(data.toString());
+	});
+})
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public/index.html'));
