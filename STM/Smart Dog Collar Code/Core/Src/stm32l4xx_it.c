@@ -22,8 +22,10 @@
 #include "stm32l4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "adpcm.h"
-//#include "dac.h"
+#include "stm32l476xx.h"
+#include <string.h>
+#include <stdint.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -33,7 +35,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define GPS_BUF_SIZE 300
+#define LORA_BUF_SIZE 240
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -43,9 +46,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-tTwoByte newSample;
-extern AudioElement AudioFile;
-extern uint8_t AudioFileToPlay;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,12 +57,24 @@ extern uint8_t AudioFileToPlay;
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+
+extern uint8_t tx_data_lora[LORA_BUF_SIZE]; 
+extern uint8_t rx_data_lora[LORA_BUF_SIZE];
+
+extern uint8_t rx_data_gps[GPS_BUF_SIZE];
+extern char gpgga[42];
+
+extern const uint8_t stopCommand[18200];
+extern const uint8_t  whistle[24580];
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern DMA_HandleTypeDef hdma_dac_ch1;
+extern TIM_HandleTypeDef htim3;
 extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
-
+extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart3;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -203,79 +216,88 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles TIM2 global interrupt.
+  * @brief This function handles EXTI line0 interrupt.
   */
-void TIM2_IRQHandler(void)
+void EXTI0_IRQHandler(void)
 {
-  /* USER CODE BEGIN TIM2_IRQn 0 */
-  uint8_t  adpcmSample;
-  static uint16_t pcmSample;
-  static uint8_t nibble = 1;
-  static uint8_t repetition = 0;
-  static uint16_t sample_position = 0;
-  static unsigned char *RawAudio;
-  static uint8_t PrevAudioFileToPlay = 0xFF;
+  /* USER CODE BEGIN EXTI0_IRQn 0 */
 
-  if(PrevAudioFileToPlay != AudioFileToPlay)
-  {
-	PrevAudioFileToPlay = AudioFileToPlay;
-	nibble = 1;
-	repetition = 0;
-	sample_position = 0;
-	RawAudio = (unsigned char *)AudioFile.AudioFiles[AudioFileToPlay];
+  /* USER CODE END EXTI0_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
+  /* USER CODE BEGIN EXTI0_IRQn 1 */
+
+  
+  // uint8_t audio_cue = rx_data_lora[11];
+  // printf("\r\nAudio Cue: %d\n\r", audio_cue);
+
+  // HAL_Delay(100);
+  // bzero(tx_data_lora, 240);
+  // bzero(rx_data_lora, 240);
+  // memcpy(tx_data_lora, "AT+SEND=123,8,Received\r\n", 24); //24 is size of string without /0
+  // HAL_UART_Transmit(&huart3, tx_data_lora, 24, 1000);
+  // while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){} //Wait to receive "+OK"
+  // HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
+
+  // if(audio_cue == 'A'){
+  //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+  // }
+  // else if(audio_cue == 'B'){
+  //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
+  // }
+  // else if(audio_cue == 'C'){
+  //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+  // }
+  
+
+  /* USER CODE END EXTI0_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA1 channel3 global interrupt.
+  */
+void DMA1_Channel3_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel3_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel3_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_dac_ch1);
+  /* USER CODE BEGIN DMA1_Channel3_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM3 global interrupt.
+  */
+void TIM3_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM3_IRQn 0 */
+
+  /* USER CODE END TIM3_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim3);
+  /* USER CODE BEGIN TIM3_IRQn 1 */
+
+  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_15);
+
+  //Uncomment to use GPS
+  bzero(rx_data_gps, GPS_BUF_SIZE); //clear tx buffer
+  printf("GPS DATA: \n\r");
+  while(HAL_UART_Receive(&huart1, rx_data_gps, GPS_BUF_SIZE, 2000)!=HAL_OK){} //wait until received
+  HAL_UART_Transmit(&huart2, rx_data_gps, GPS_BUF_SIZE, 10); //print received data to terminal  
+  printf("\n\n\r");
+
+  char *gpgga_loc = strstr((char *)rx_data_gps, "$GPGGA");
+  
+  bzero(gpgga, 42); //clear gpgga buffer
+  memcpy(gpgga, gpgga_loc, 42); //copy command to tx buffer
+  if(gpgga_loc != NULL){
+    printf("GPGGA DATA: %s\n\r", gpgga);
+  }
+  else{
+    printf("None found\n\r");
   }
 
-  if (LL_TIM_IsActiveFlag_UPDATE(TIM2))
-  {
-		LL_TIM_ClearFlag_UPDATE(TIM2);
-
-		if ((repetition==0) & (sample_position < AudioFile.AudioSize[AudioFileToPlay]))
-		{  // new sample is generated
-			repetition = 7;	// reinitialize repetition down counter
-			if (nibble)
-			{   // first 4 bits of the ADPCM byte decoded
-				adpcmSample = (uint8_t)(RawAudio[sample_position] >> 4);
-			}
-			else
-			{   // last 4 bits of the ADPCM byte decoded
-				adpcmSample = (uint8_t)(RawAudio[sample_position] & 0x0F);
-				sample_position++ ;
-			}
-
-			nibble = (uint8_t)(!nibble);/* indicator inverted mean next interrupt will handle
-																					 the second part of the byte.  */
-			pcmSample = ADPCM_Decode(adpcmSample);
-
-			// update sample
-			newSample.uShort = (uint16_t)32768 + pcmSample;
-			TIM2->CCR2 = newSample.uBytes[0]; //LSB
-			TIM2->CCR1 = newSample.uBytes[1]; //MSB
-//			HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, (newSample.uShort)>>4);
-		}
-		else if (sample_position < AudioFile.AudioSize[AudioFileToPlay])
-		{  // repetition 7 more times of the PWM period before new sample, total of times the same value is repeated = 8
-			repetition--;
-
-			// reload Timer with the actual sample value
-			newSample.uShort = (uint16_t)32768 + pcmSample;
-			TIM2->CCR2 = newSample.uBytes[0]; //LSB
-			TIM2->CCR1 = newSample.uBytes[1]; //MSB
-//			HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_1, DAC_ALIGN_12B_R, (newSample.uShort)>>4);
-		}
-		else
-		{  // end of the audio clip
-			/* Disable the TIM3 Interrupt */
-			NVIC_DisableIRQ(TIM2_IRQn);
-			// stop the timer
-			LL_TIM_DisableCounter(TIM2);
-		}
-
-	}
-	return;
-  /* USER CODE END TIM2_IRQn 0 */
-  /* USER CODE BEGIN TIM2_IRQn 1 */
-
-  /* USER CODE END TIM2_IRQn 1 */
+  /* USER CODE END TIM3_IRQn 1 */
 }
 
 /**
