@@ -1,5 +1,5 @@
-AudioFile/stop_command_m.o: ../AudioFile/stop_command_m.c \
- ../Core/Inc/adpcm.h ../Core/Inc/main.h \
+Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_iwdg.o: \
+ ../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_iwdg.c \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
  ../Core/Inc/stm32l4xx_hal_conf.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
@@ -24,23 +24,13 @@ AudioFile/stop_command_m.o: ../AudioFile/stop_command_m.c \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_iwdg.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_crs.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_rcc.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_bus.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_system.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_exti.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_cortex.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_utils.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_pwr.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_dma.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_tim.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_gpio.h
-../Core/Inc/adpcm.h:
-../Core/Inc/main.h:
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h:
@@ -65,18 +55,10 @@ AudioFile/stop_command_m.o: ../AudioFile/stop_command_m.c \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_iwdg.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_crs.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_rcc.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_bus.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_system.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_exti.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_cortex.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_utils.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_pwr.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_dma.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_tim.h:
-../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_ll_gpio.h:

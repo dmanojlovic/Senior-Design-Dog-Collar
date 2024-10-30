@@ -49,6 +49,8 @@
 DAC_HandleTypeDef hdac1;
 DMA_HandleTypeDef hdma_dac_ch1;
 
+IWDG_HandleTypeDef hiwdg;
+
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
@@ -70,6 +72,7 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_IWDG_Init(void);
 /* USER CODE BEGIN PFP */
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
@@ -138,21 +141,22 @@ int main(void)
   MX_USART3_UART_Init();
   MX_TIM3_Init();
   MX_TIM2_Init();
+  MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
 
   printf("START OF CODE\r\n\n");
 
-  HAL_Delay(100);
-  bzero(tx_data_lora, 240);
-  bzero(rx_data_lora, 240);
-  memcpy(tx_data_lora, "AT\r\n", 4);
-  HAL_UART_Transmit(&huart3, tx_data_lora, 4, 1000);
-  while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){}
-  HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
+//  HAL_Delay(100);
+//  bzero(tx_data_lora, 240);
+//  bzero(rx_data_lora, 240);
+//  memcpy(tx_data_lora, "AT\r\n", 4);
+//  HAL_UART_Transmit(&huart3, tx_data_lora, 4, 1000);
+//  while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){}
+//  HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
 
 
   //Set LoRa settings
-  setup_lora();
+//  setup_lora();
 
   //Enable GPS Interrupt
   if (HAL_TIM_Base_Start_IT(&htim3) != HAL_OK)
@@ -162,14 +166,14 @@ int main(void)
   }
 
   //Turn off debug LEDs
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);
+//  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
+//  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+//  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
+//  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
+//  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);
 
   //Enable DAC timer
-  HAL_TIM_Base_Start(&htim2);
+//  HAL_TIM_Base_Start(&htim2);
 
   /* USER CODE END 2 */
 
@@ -198,41 +202,49 @@ int main(void)
     // }
 
     //Receive Audio cue from LoRa
-    audio_cue = 0;
-    bzero(rx_data_lora, 240); //clear rx buffer
-    while(HAL_UART_Receive(&huart3, rx_data_lora, 12, 1000)!=HAL_OK){} //Expects "+RCV=123,1,?" where ? is the audio cue
-    HAL_UART_Transmit(&huart2, rx_data_lora, 12, 10);
+    // audio_cue = 0;
+    // bzero(rx_data_lora, 240); //clear rx buffer
+    // // printf("Before Wait\n\r");
+    // while(HAL_UART_Receive(&huart3, rx_data_lora, 12, 1000)!=HAL_OK){} //Expects "+RCV=123,1,?" where ? is the audio cue
+    // HAL_UART_Transmit(&huart2, rx_data_lora, 12, 10);
+    // // printf("Send interrupt\n\r");
     // EXTI->SWIER1 |= EXTI_SWIER1_SWI0; //send software interrupt
 
-    HAL_Delay(100);
-    audio_cue = rx_data_lora[11];
-    printf("\r\nAudio Cue: %d\n\r", audio_cue);
+    // HAL_Delay(100);
+    // audio_cue = rx_data_lora[11];
+    // printf("\r\nAudio Cue: %d\n\r", audio_cue);
+    // if(audio_cue != 0){
+    //   EXTI->SWIER1 |= EXTI_SWIER1_SWI0; //send software interrupt
+    // }
 
-    HAL_Delay(100);
-    bzero(tx_data_lora, 240);
-    bzero(rx_data_lora, 240);
-    memcpy(tx_data_lora, "AT+SEND=123,8,Received\r\n", 24); //24 is size of string without /0
-    HAL_UART_Transmit(&huart3, tx_data_lora, 24, 1000);
-    while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){} //Wait to receive "+OK"
-    HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
+    // HAL_Delay(100);
+    // bzero(tx_data_lora, 240);
+    // bzero(rx_data_lora, 240);
+    // memcpy(tx_data_lora, "AT+SEND=123,8,Received\r\n", 24); //24 is size of string without /0
+    // HAL_UART_Transmit(&huart3, tx_data_lora, 24, 1000);
+    // while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){} //Wait to receive "+OK"
+    // HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
 
-    if(audio_cue == 'A'){
-      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-    }
-    else if(audio_cue == 'B'){
-      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
-    }
-    else if(audio_cue == 'C'){
-      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-    }
-    else{
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
-    }
-    audio_cue = 0;
-    HAL_Delay(100);
+    // if(audio_cue == 'A'){
+    //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+    // }
+    // else if(audio_cue == 'B'){
+    //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
+    // }
+    // else if(audio_cue == 'C'){
+    //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+    // }
+    // else{
+    //   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+    //   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
+    //   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
+    // }
+
+    // audio_cue = 0;
+    // HAL_Delay(100);
  
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+    HAL_Delay(1000);
 
     //Software Interrupt
     // if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == 0){
@@ -257,7 +269,7 @@ int main(void)
   // else{
   //   printf("None found\n\r");
   // }
-
+    HAL_IWDG_Refresh(&hiwdg);
   }
   /* USER CODE END 3 */
 }
@@ -281,7 +293,8 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
@@ -356,6 +369,35 @@ static void MX_DAC1_Init(void)
 }
 
 /**
+  * @brief IWDG Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_IWDG_Init(void)
+{
+
+  /* USER CODE BEGIN IWDG_Init 0 */
+
+  /* USER CODE END IWDG_Init 0 */
+
+  /* USER CODE BEGIN IWDG_Init 1 */
+
+  /* USER CODE END IWDG_Init 1 */
+  hiwdg.Instance = IWDG;
+  hiwdg.Init.Prescaler = IWDG_PRESCALER_256;
+  hiwdg.Init.Window = 4095;
+  hiwdg.Init.Reload = 3750;
+  if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN IWDG_Init 2 */
+
+  /* USER CODE END IWDG_Init 2 */
+
+}
+
+/**
   * @brief TIM2 Initialization Function
   * @param None
   * @retval None
@@ -419,7 +461,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 9999;
+  htim3.Init.Prescaler = 19999;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 39999;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;

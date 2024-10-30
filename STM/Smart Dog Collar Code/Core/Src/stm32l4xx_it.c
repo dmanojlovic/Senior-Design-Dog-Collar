@@ -75,6 +75,8 @@ extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart3;
+extern DAC_HandleTypeDef hdac1;
+extern IWDG_HandleTypeDef hiwdg;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -227,28 +229,31 @@ void EXTI0_IRQHandler(void)
   /* USER CODE BEGIN EXTI0_IRQn 1 */
 
   
-  // uint8_t audio_cue = rx_data_lora[11];
-  // printf("\r\nAudio Cue: %d\n\r", audio_cue);
+  uint8_t audio_cue = rx_data_lora[11];
+  printf("\r\nAudio Cue: %d\n\r", audio_cue);
 
-  // HAL_Delay(100);
-  // bzero(tx_data_lora, 240);
-  // bzero(rx_data_lora, 240);
-  // memcpy(tx_data_lora, "AT+SEND=123,8,Received\r\n", 24); //24 is size of string without /0
-  // HAL_UART_Transmit(&huart3, tx_data_lora, 24, 1000);
-  // while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){} //Wait to receive "+OK"
-  // HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
+  if(audio_cue == 'A'){
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+    HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)whistle, 24580, DAC_ALIGN_8B_R);
+  }
+  else if(audio_cue == 'B'){
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
+    HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)stopCommand, 18200, DAC_ALIGN_8B_R);
+  }
+  else if(audio_cue == 'C'){
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+  }
 
-  // if(audio_cue == 'A'){
-  //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-  // }
-  // else if(audio_cue == 'B'){
-  //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
-  // }
-  // else if(audio_cue == 'C'){
-  //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-  // }
-  
+  bzero(tx_data_lora, 240);
+  bzero(rx_data_lora, 240);
+  memcpy(tx_data_lora, "AT+SEND=123,8,Received\r\n", 24); //24 is size of string without /0
+  // printf("Sending\r\n");
+  HAL_UART_Transmit(&huart3, tx_data_lora, 24, 1000);
+  while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){} //Wait to receive "+OK"
+  HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
 
+  audio_cue = 0;
+  HAL_IWDG_Refresh(&hiwdg);
   /* USER CODE END EXTI0_IRQn 1 */
 }
 
@@ -277,26 +282,39 @@ void TIM3_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
 
-  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_15);
+  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
 
   //Uncomment to use GPS
   bzero(rx_data_gps, GPS_BUF_SIZE); //clear tx buffer
-  printf("GPS DATA: \n\r");
+  // printf("GPS DATA: \n\r");
   while(HAL_UART_Receive(&huart1, rx_data_gps, GPS_BUF_SIZE, 2000)!=HAL_OK){} //wait until received
-  HAL_UART_Transmit(&huart2, rx_data_gps, GPS_BUF_SIZE, 10); //print received data to terminal  
-  printf("\n\n\r");
+  // HAL_UART_Transmit(&huart2, rx_data_gps, GPS_BUF_SIZE, 10); //print received data to terminal  
+  // printf("\n\n\r");
 
   char *gpgga_loc = strstr((char *)rx_data_gps, "$GPGGA");
   
-  bzero(gpgga, 42); //clear gpgga buffer
-  memcpy(gpgga, gpgga_loc, 42); //copy command to tx buffer
+  bzero(gpgga, 38); //clear gpgga buffer
+  memcpy(gpgga, gpgga_loc, 38); //copy command to tx buffer
   if(gpgga_loc != NULL){
     printf("GPGGA DATA: %s\n\r", gpgga);
+
+    // char txsend[55] = "AT+SEND=123,38,";
+    // strcat(txsend, gpgga);
+    // strcat(txsend, "\r\n");
+    // printf("RX: %s", txsend);
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
+
+    // bzero(rx_data_lora, LORA_BUF_SIZE);
+    // HAL_UART_Transmit(&huart3, txsend, strlen(txsend), 1000);
+    // while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){}
+    // HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
+    // printf("Done Sending\r\n");
   }
   else{
     printf("None found\n\r");
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_15);
   }
-
+  HAL_IWDG_Refresh(&hiwdg);
   /* USER CODE END TIM3_IRQn 1 */
 }
 
