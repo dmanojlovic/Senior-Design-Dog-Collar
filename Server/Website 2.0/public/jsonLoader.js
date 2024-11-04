@@ -58,8 +58,9 @@ async function initMap(latlng){
 function jsonLoad() {
     fetch('data.json').then(response => response.json()).then(data => {
     const time = document.getElementById("time");
+    const strength = document.getElementById("strength");
     time.textContent = "Last Recorded: " + data.time;
-
+    strength.textContent = "Signal Strength: " + data.strength;
 
     initMap(data.location);
 
