@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 80;
 const path = require('path');
 var fs = require('fs');
 const spawn = require("child_process").spawn;
+var audioPlaying = 0;
 
 require('dotenv').config();
 
@@ -18,11 +19,16 @@ app.post("/geofence", (req, res) => {
 });
 
 app.post("/alarm", (req, res) => {
-	console.log(req.body["button"])
-	var pythonProcess = spawn('python', ['test.py', req.body["button"]])
-	pythonProcess.stdout.on('data', (data) => {
-		console.log(data.toString());
-	});
+	if(audioPlaying == 0){
+		audioPlaying = 1;
+		console.log(req.body["button"])
+		var pythonProcess = spawn('python', ['test.py', req.body["button"]])
+		pythonProcess.stdout.on('data', (data) => {
+			console.log(data.toString());
+		});
+		audioPlaying = 0;
+	}
+	res.sendStatus(200)
 })
 
 app.get('/', (req, res) => {
@@ -31,4 +37,8 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
 	console.log(`App listening on port ${port}`);
+	var pythonProcess = spawn('python',['master.py'])
+	pythonProcess.stdout.on('data', (data) => {
+			console.log(data.toString());
+	});
 });

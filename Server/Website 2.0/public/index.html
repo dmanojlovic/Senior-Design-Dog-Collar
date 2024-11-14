@@ -14,15 +14,20 @@
     <div style="justify-content:center; display:flex;padding-bottom: 10px">
       <button style="font-size:5vh; margin-right:10px" onclick="test('Buzzer')">Buzzer</button>
       <button style="font-size:5vh" onclick="test('Stop')">Stop</button>
-      <button style="font-size:5vh; margin-left:10px" onclick="test('Return')">Return</button>
+      <button style="font-size:5vh; margin-left:10px" onclick="test('Return')">No</button>
     </div>
     <div id="map"></div>
     
     <script src="jsonLoader.js"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=&callback=jsonLoad&v=weekly&solution_channel=GMP_CCS_simplepolygon_v2"
+      src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=jsonLoad&v=weekly&solution_channel=GMP_CCS_simplepolygon_v2"
       defer
     ></script>
-    
+    <script>
+    window.addEventListener('load', function(){
+      var interval = 10 * 1000;
+      setInterval(jsonLoad, interval);
+    });
+    </script>
   </body>
 </html>

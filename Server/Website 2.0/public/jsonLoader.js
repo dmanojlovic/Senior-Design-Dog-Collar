@@ -1,5 +1,9 @@
+var initialized = 0;
+var map;
+var posArea;
+
 async function initMap(latlng){
-    const map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         zoom: 18,
         center: latlng,
         mapTypeId: "terrain"
@@ -27,7 +31,7 @@ async function initMap(latlng){
         draggable: true
       });
 
-    const posArea = new google.maps.Circle({
+    posArea = new google.maps.Circle({
         strokeColor: "#00FF00",
         strokeOpacity: 0.8,
         strokeWeight: 2,
@@ -60,13 +64,27 @@ function jsonLoad() {
     const time = document.getElementById("time");
     const strength = document.getElementById("strength");
     time.textContent = "Last Recorded: " + data.time;
-    strength.textContent = "Signal Strength: " + data.strength;
-
-    initMap(data.location);
-
+    strength.textContent = "Communication Signal Strength: " + data.strength;
+    if(initialized == 0){
+        initMap(data.location);
+        initialized = 1
+    }
+    else{
+        posArea.setMap(null);
+        posArea = new google.maps.Circle({
+            strokeColor: "#00FF00",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#00FF00",
+            fillOpacity: 0.35,
+            map,
+            center: data.location,
+            radius: Math.sqrt(.01) * 100,
+        });
+        posArea.setMap(map);
+        map.setCenter(data.location);
+    }
     }).catch(error => console.error("Error fetching JSON data:", error));
 }
 
-function load(){}
 
-document.addEventListener("DOMContentLoaded", jsonLoad());

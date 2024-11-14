@@ -2,6 +2,7 @@ import json
 
 
 #Purdue Location
+'''
 data = {
     "life" : 85,
     "location" : {
@@ -9,10 +10,7 @@ data = {
         "lat" : 40.424
     }
 }
-
-def jsonSave(data):
-    with open('Website 2.0/public/data.json', 'w') as file:
-        json.dump(data, file)
+'''
 
 def NMEAConv(lng :str, lat :str):
     degLng = lng[0:3]
@@ -20,8 +18,8 @@ def NMEAConv(lng :str, lat :str):
     decLng = float(lng[3:10]) 
     decLat = float(lat[2:9])
 
-    lngDir = lng[12]
-    latDir = lat[11]
+    lngDir = lng[-1]
+    latDir = lat[-1]
 
     decLng /= 60
     decLat /= 60
@@ -35,11 +33,4 @@ def NMEAConv(lng :str, lat :str):
         outLat *= -1
 
     return outLng, outLat
-
-lng, lat = NMEAConv("08654.48396,W", "4025.55214,N")
-
-data['location']['lng'] = lng
-data['location']['lat'] = lat
-
-jsonSave(data)
 
