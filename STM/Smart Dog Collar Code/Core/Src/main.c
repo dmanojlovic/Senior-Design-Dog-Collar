@@ -38,6 +38,8 @@
 /* USER CODE BEGIN PD */
 #define GPS_BUF_SIZE 300
 #define LORA_BUF_SIZE 240
+#define GPS_SETTING_MSG 200
+#define RX_BUF 1
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -52,7 +54,7 @@ DMA_HandleTypeDef hdma_dac_ch1;
 IWDG_HandleTypeDef hiwdg;
 
 TIM_HandleTypeDef htim2;
-TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim7;
 
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
@@ -70,9 +72,9 @@ static void MX_USART2_UART_Init(void);
 static void MX_DAC1_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART3_UART_Init(void);
-static void MX_TIM3_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_IWDG_Init(void);
+static void MX_TIM7_Init(void);
 /* USER CODE BEGIN PFP */
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
@@ -95,14 +97,24 @@ void setup_lora(void);
 
 
 uint8_t tx_data_lora[LORA_BUF_SIZE]; 
+uint8_t tx_received[24] = "AT+SEND=123,8,Received\r\n"; 
 uint8_t rx_data_lora[LORA_BUF_SIZE];
 uint8_t audio_cue;
 
-uint8_t rx_data_gps[GPS_BUF_SIZE];
-char gpgga[42];
 
+uint8_t rx_data_gps[GPS_BUF_SIZE];
+uint8_t tx_gps_settings[GPS_SETTING_MSG];
+char gngga[42];
+
+const uint8_t zero[1] = {0};
 extern const uint8_t stopCommand[18200];
-extern const uint8_t  whistle[24580];
+extern const uint8_t whistle[24580];
+extern const uint8_t comeHome[22908];
+extern const uint8_t noCommand[22332];
+extern const uint8_t Se7enNo[19316];
+
+
+uint8_t buf[11];
 /* USER CODE END 0 */
 
 /**
@@ -139,42 +151,49 @@ int main(void)
   MX_DAC1_Init();
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
-  MX_TIM3_Init();
   MX_TIM2_Init();
   MX_IWDG_Init();
+  MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
 
   printf("START OF CODE\r\n\n");
 
-//  HAL_Delay(100);
-//  bzero(tx_data_lora, 240);
-//  bzero(rx_data_lora, 240);
-//  memcpy(tx_data_lora, "AT\r\n", 4);
-//  HAL_UART_Transmit(&huart3, tx_data_lora, 4, 1000);
-//  while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){}
-//  HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
-
+  //Enable DAC timer
+  HAL_TIM_Base_Start(&htim2);
+  
+  //Start DAC with zero output value
+  HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)zero, 1, DAC_ALIGN_8B_R);
 
   //Set LoRa settings
-//  setup_lora();
+  setup_lora();
 
+  //Change the Seggings of the GPS by sending PMTK commands
+  // bzero(tx_gps_settings, GPS_SETTING_MSG);
+  // memcpy(tx_data_lora, "$PMTK225,0*2B<CR><LF>\r\n", 24); //set to normal mode (not always locate mode)
+  // HAL_UART_Transmit(&huart1, tx_data_lora, 24, 1000);
+
+  // HAL_Delay(1000);
   //Enable GPS Interrupt
-  if (HAL_TIM_Base_Start_IT(&htim3) != HAL_OK)
-  {
-    /* Starting Error */
-    Error_Handler();
-  }
+ HAL_TIM_Base_Start_IT(&htim7);
+  // if (HAL_TIM_Base_Start_IT(&htim7) != HAL_OK)
+  // {
+  //   /* Starting Error */
+  //   printf("ERROR\r\n");
+  //   Error_Handler();
+  // }
+
+
+  HAL_IWDG_Refresh(&hiwdg);
 
   //Turn off debug LEDs
-//  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
 //  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
 //  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
 //  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
 //  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);
 
-  //Enable DAC timer
-//  HAL_TIM_Base_Start(&htim2);
-
+  bzero(rx_data_lora, 240); //clear rx buffer
+  HAL_UART_Receive_IT(&huart3, rx_data_lora, RX_BUF);
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -187,88 +206,8 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 
-    //Audio cue with buttons
-    // if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == 0){
-    //   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
-    //   HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)stopCommand, 18200, DAC_ALIGN_8B_R);
-    // }
-    // else if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_3) == 1){
-    //   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 1);
-    //   HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)whistle, 24580, DAC_ALIGN_8B_R);
-    // }
-    // else{
-    //   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
-    //   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
-    // }
+    HAL_Delay(2000);
 
-    //Receive Audio cue from LoRa
-    // audio_cue = 0;
-    // bzero(rx_data_lora, 240); //clear rx buffer
-    // // printf("Before Wait\n\r");
-    // while(HAL_UART_Receive(&huart3, rx_data_lora, 12, 1000)!=HAL_OK){} //Expects "+RCV=123,1,?" where ? is the audio cue
-    // HAL_UART_Transmit(&huart2, rx_data_lora, 12, 10);
-    // // printf("Send interrupt\n\r");
-    // EXTI->SWIER1 |= EXTI_SWIER1_SWI0; //send software interrupt
-
-    // HAL_Delay(100);
-    // audio_cue = rx_data_lora[11];
-    // printf("\r\nAudio Cue: %d\n\r", audio_cue);
-    // if(audio_cue != 0){
-    //   EXTI->SWIER1 |= EXTI_SWIER1_SWI0; //send software interrupt
-    // }
-
-    // HAL_Delay(100);
-    // bzero(tx_data_lora, 240);
-    // bzero(rx_data_lora, 240);
-    // memcpy(tx_data_lora, "AT+SEND=123,8,Received\r\n", 24); //24 is size of string without /0
-    // HAL_UART_Transmit(&huart3, tx_data_lora, 24, 1000);
-    // while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){} //Wait to receive "+OK"
-    // HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
-
-    // if(audio_cue == 'A'){
-    //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-    // }
-    // else if(audio_cue == 'B'){
-    //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
-    // }
-    // else if(audio_cue == 'C'){
-    //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-    // }
-    // else{
-    //   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
-    //   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
-    //   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, 0);
-    // }
-
-    // audio_cue = 0;
-    // HAL_Delay(100);
- 
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-    HAL_Delay(1000);
-
-    //Software Interrupt
-    // if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == 0){
-    //   HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-    //   EXTI->SWIER1 |= EXTI_SWIER1_SWI0; //send software interrupt
-    // }
-
-
-  
-  //GPS not in interrupt
-  // bzero(rx_data_gps, GPS_BUF_SIZE); //clear tx buffer
-  // printf("GPS DATA: \n\r");
-  // while(HAL_UART_Receive(&huart1, rx_data_gps, GPS_BUF_SIZE, 2000)!=HAL_OK){} //wait until received
-  // HAL_UART_Transmit(&huart2, rx_data_gps, GPS_BUF_SIZE, 10); //print received data to terminal  
-  // printf("\n\n\r");
-  // char *gpgga_loc = strstr(rx_data_gps, "$GPGGA");
-  // bzero(gpgga, 42); //clear gpgga buffer
-  // memcpy(gpgga, gpgga_loc, 42); //copy command to tx buffer
-  // if(gpgga_loc != NULL){
-  //   printf("GPGGA DATA: %s\n\r", gpgga);
-  // }
-  // else{
-  //   printf("None found\n\r");
-  // }
     HAL_IWDG_Refresh(&hiwdg);
   }
   /* USER CODE END 3 */
@@ -301,7 +240,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
   RCC_OscInitStruct.PLL.PLLM = 1;
-  RCC_OscInitStruct.PLL.PLLN = 40;
+  RCC_OscInitStruct.PLL.PLLN = 20;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
@@ -319,7 +258,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -386,7 +325,7 @@ static void MX_IWDG_Init(void)
   hiwdg.Instance = IWDG;
   hiwdg.Init.Prescaler = IWDG_PRESCALER_256;
   hiwdg.Init.Window = 4095;
-  hiwdg.Init.Reload = 3750;
+  hiwdg.Init.Reload = 1875;
   if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
   {
     Error_Handler();
@@ -418,7 +357,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 0;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 2500;
+  htim2.Init.Period = 1250;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -443,47 +382,40 @@ static void MX_TIM2_Init(void)
 }
 
 /**
-  * @brief TIM3 Initialization Function
+  * @brief TIM7 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_TIM3_Init(void)
+static void MX_TIM7_Init(void)
 {
 
-  /* USER CODE BEGIN TIM3_Init 0 */
+  /* USER CODE BEGIN TIM7_Init 0 */
 
-  /* USER CODE END TIM3_Init 0 */
+  /* USER CODE END TIM7_Init 0 */
 
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
-  /* USER CODE BEGIN TIM3_Init 1 */
+  /* USER CODE BEGIN TIM7_Init 1 */
 
-  /* USER CODE END TIM3_Init 1 */
-  htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 19999;
-  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 39999;
-  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  /* USER CODE END TIM7_Init 1 */
+  htim7.Instance = TIM7;
+  htim7.Init.Prescaler = 19999;
+  htim7.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim7.Init.Period = 19999;
+  htim7.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim7) != HAL_OK)
   {
     Error_Handler();
   }
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim7, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN TIM3_Init 2 */
+  /* USER CODE BEGIN TIM7_Init 2 */
 
-  /* USER CODE END TIM3_Init 2 */
+  /* USER CODE END TIM7_Init 2 */
 
 }
 
@@ -507,7 +439,7 @@ static void MX_USART1_UART_Init(void)
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.Mode = UART_MODE_RX;
   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
@@ -626,9 +558,6 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : PC13 PC3 */
@@ -643,23 +572,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA5 */
-  GPIO_InitStruct.Pin = GPIO_PIN_5;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
   /*Configure GPIO pins : PB12 PB13 PB14 PB15 */
   GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
@@ -670,8 +588,8 @@ void setup_lora(void){
   
   HAL_Delay(100);
   send_lora("AT\r\n", 4, 5); //basic stm to lora check (rcv: +OK)
-  HAL_Delay(100);
-  send_lora("AT+FACTORY\r\n", 12, 8); //set to factory default (rcv: +FACTORY)
+  // HAL_Delay(100);
+  // send_lora("AT+FACTORY\r\n", 12, 8); //set to factory default (rcv: +FACTORY)
   HAL_Delay(100);
   send_lora("AT+ADDRESS=124\r\n", 16, 5); //set lora address (rcv: +OK)
   HAL_Delay(100);
@@ -692,7 +610,49 @@ void send_lora(char *msg, int size, int resp_size){
   HAL_UART_Transmit(&huart2, rx_data_lora, resp_size, 10);
 }
 
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{   
+  // printf("Enter UART Callback\r\n");
+    
+  if(rx_data_lora[0] == 'R'){
+  // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, 0);
+  // printf("R received\r\n");
+  HAL_UART_Receive(&huart3, buf, 11, 1000); //get the rest of the sent data
+  // printf("buf:%s\r\n", buf);
+  
+  uint8_t audio_cue = buf[9];
+  // printf("Audio Cue: %d\n\r", audio_cue);
 
+  if(audio_cue == 'A'){
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+    HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)whistle, 24580, DAC_ALIGN_8B_R);
+  }
+  else if(audio_cue == 'B'){
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+    HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)stopCommand, 18200, DAC_ALIGN_8B_R);
+  }
+  else if(audio_cue == 'C'){
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+    // HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)noCommand, 22332, DAC_ALIGN_8B_R);
+    HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)Se7enNo, 19316, DAC_ALIGN_8B_R);
+
+  }
+  else if(audio_cue == 'D'){
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
+    // HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)comeHome, 22908, DAC_ALIGN_8B_R);
+  }
+  
+
+    HAL_UART_Transmit(&huart3, tx_received, 24, 1000);
+    printf("Audio Received\n\r");
+  }
+
+  // printf("Callback\n\r");
+
+  bzero(rx_data_lora, 240);
+  bzero(buf, 11);
+  HAL_UART_Receive_IT(&huart3, rx_data_lora, RX_BUF);
+}
 
 /* USER CODE END 4 */
 

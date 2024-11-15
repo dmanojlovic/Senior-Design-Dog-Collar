@@ -36,6 +36,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define GPS_BUF_SIZE 300
+#define GNGGA_SIZE 42
 #define LORA_BUF_SIZE 240
 /* USER CODE END PD */
 
@@ -62,7 +63,7 @@ extern uint8_t tx_data_lora[LORA_BUF_SIZE];
 extern uint8_t rx_data_lora[LORA_BUF_SIZE];
 
 extern uint8_t rx_data_gps[GPS_BUF_SIZE];
-extern char gpgga[42];
+extern char gngga[GNGGA_SIZE];
 
 extern const uint8_t stopCommand[18200];
 extern const uint8_t  whistle[24580];
@@ -70,8 +71,9 @@ extern const uint8_t  whistle[24580];
 
 /* External variables --------------------------------------------------------*/
 extern DMA_HandleTypeDef hdma_dac_ch1;
-extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef htim7;
 extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart3;
 /* USER CODE BEGIN EV */
 extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart3;
@@ -218,46 +220,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI line0 interrupt.
-  */
-void EXTI0_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI0_IRQn 0 */
-
-  /* USER CODE END EXTI0_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
-  /* USER CODE BEGIN EXTI0_IRQn 1 */
-
-  
-  uint8_t audio_cue = rx_data_lora[11];
-  printf("\r\nAudio Cue: %d\n\r", audio_cue);
-
-  if(audio_cue == 'A'){
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-    HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)whistle, 24580, DAC_ALIGN_8B_R);
-  }
-  else if(audio_cue == 'B'){
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
-    HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint8_t*)stopCommand, 18200, DAC_ALIGN_8B_R);
-  }
-  else if(audio_cue == 'C'){
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-  }
-
-  bzero(tx_data_lora, 240);
-  bzero(rx_data_lora, 240);
-  memcpy(tx_data_lora, "AT+SEND=123,8,Received\r\n", 24); //24 is size of string without /0
-  // printf("Sending\r\n");
-  HAL_UART_Transmit(&huart3, tx_data_lora, 24, 1000);
-  while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){} //Wait to receive "+OK"
-  HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
-
-  audio_cue = 0;
-  HAL_IWDG_Refresh(&hiwdg);
-  /* USER CODE END EXTI0_IRQn 1 */
-}
-
-/**
   * @brief This function handles DMA1 channel3 global interrupt.
   */
 void DMA1_Channel3_IRQHandler(void)
@@ -272,53 +234,6 @@ void DMA1_Channel3_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles TIM3 global interrupt.
-  */
-void TIM3_IRQHandler(void)
-{
-  /* USER CODE BEGIN TIM3_IRQn 0 */
-
-  /* USER CODE END TIM3_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim3);
-  /* USER CODE BEGIN TIM3_IRQn 1 */
-
-  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
-
-  //Uncomment to use GPS
-  bzero(rx_data_gps, GPS_BUF_SIZE); //clear tx buffer
-  // printf("GPS DATA: \n\r");
-  while(HAL_UART_Receive(&huart1, rx_data_gps, GPS_BUF_SIZE, 2000)!=HAL_OK){} //wait until received
-  // HAL_UART_Transmit(&huart2, rx_data_gps, GPS_BUF_SIZE, 10); //print received data to terminal  
-  // printf("\n\n\r");
-
-  char *gpgga_loc = strstr((char *)rx_data_gps, "$GPGGA");
-  
-  bzero(gpgga, 38); //clear gpgga buffer
-  memcpy(gpgga, gpgga_loc, 38); //copy command to tx buffer
-  if(gpgga_loc != NULL){
-    printf("GPGGA DATA: %s\n\r", gpgga);
-
-    // char txsend[55] = "AT+SEND=123,38,";
-    // strcat(txsend, gpgga);
-    // strcat(txsend, "\r\n");
-    // printf("RX: %s", txsend);
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
-
-    // bzero(rx_data_lora, LORA_BUF_SIZE);
-    // HAL_UART_Transmit(&huart3, txsend, strlen(txsend), 1000);
-    // while(HAL_UART_Receive(&huart3, rx_data_lora, 5, 1000)!=HAL_OK){}
-    // HAL_UART_Transmit(&huart2, rx_data_lora, 5, 10);
-    // printf("Done Sending\r\n");
-  }
-  else{
-    printf("None found\n\r");
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_15);
-  }
-  HAL_IWDG_Refresh(&hiwdg);
-  /* USER CODE END TIM3_IRQn 1 */
-}
-
-/**
   * @brief This function handles USART2 global interrupt.
   */
 void USART2_IRQHandler(void)
@@ -330,6 +245,82 @@ void USART2_IRQHandler(void)
   /* USER CODE BEGIN USART2_IRQn 1 */
 
   /* USER CODE END USART2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART3 global interrupt.
+  */
+void USART3_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
+
+  /* USER CODE END USART3_IRQn 0 */
+  HAL_UART_IRQHandler(&huart3);
+  /* USER CODE BEGIN USART3_IRQn 1 */
+
+
+  /* USER CODE END USART3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM7 global interrupt.
+  */
+void TIM7_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM7_IRQn 0 */
+
+  /* USER CODE END TIM7_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim7);
+  /* USER CODE BEGIN TIM7_IRQn 1 */
+
+
+  printf("Start of GPS interrupt\r\n");
+  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+
+  bzero(rx_data_gps, GPS_BUF_SIZE); //clear tx buffer
+  // printf("GPS DATA: \n\r");
+  while(HAL_UART_Receive(&huart1, rx_data_gps, GPS_BUF_SIZE, 6000)!=HAL_OK){} //wait until received
+  // HAL_UART_Receive(&huart1, rx_data_gps, GPS_BUF_SIZE, 100000); //wait until received
+  // printf("trasnmitting \n\r");
+  // HAL_UART_Transmit(&huart2, rx_data_gps, GPS_BUF_SIZE, 10); //print received data to terminal  
+  // printf("After GPS receive\n\r");
+
+  char *gngga_loc = strstr((char *)rx_data_gps, "$GNGGA");
+  
+  bzero(gngga, GNGGA_SIZE); //clear gpgga buffer
+  memcpy(gngga, gngga_loc, GNGGA_SIZE); //copy command to tx buffer
+  if(gngga_loc != NULL){
+    printf("GNGGA DATA: %s\n\r", gngga);
+
+    if(gngga[18] == ','){ //No fix found
+      // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_15);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 1);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
+    }else{ //fix found
+      // HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 1);
+      
+      char txsend[55] = "AT+SEND=123,42,";
+      strcat(txsend, gngga);
+      strcat(txsend, "\r\n");
+      printf("RX gps: %s", txsend);
+      
+      HAL_UART_Transmit(&huart3, txsend, strlen(txsend), 1000);
+      bzero(rx_data_lora, LORA_BUF_SIZE);
+      printf("Done Sending\r\n");
+    }
+      
+    
+  }
+  else{
+    printf("None found\n\r");
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_15, 0);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_13, 0);
+  }
+  HAL_IWDG_Refresh(&hiwdg);
+
+  /* USER CODE END TIM7_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
