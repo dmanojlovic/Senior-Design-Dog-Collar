@@ -1,6 +1,4 @@
-"./Core/Src/No.o"
 "./Core/Src/SE7EN_No.o"
-"./Core/Src/comeHome.o"
 "./Core/Src/main.o"
 "./Core/Src/stm32l4xx_hal_msp.o"
 "./Core/Src/stm32l4xx_it.o"
